@@ -1,6 +1,10 @@
 import { createClient } from "microcms-js-sdk";
-import { err, fromPromise, ok, Result, ResultAsync } from "neverthrow";
-import { EndPoint, endPointDataType } from "./types";
+import {
+  ArrayEndPoint,
+  EndPoint,
+  endPointDataType,
+  SingleEndPoint,
+} from "./types";
 import * as v from "valibot";
 import { endPointData } from "./valibot";
 
@@ -22,20 +26,18 @@ const client = createClient({
 function runValidation<T>(
   schema: v.GenericSchema<unknown, T>,
   data: unknown,
-): Result<T, Error> {
+): T {
   const validated = v.safeParse(schema, data);
   if (validated.success) {
-    return ok(validated.output);
+    return validated.output;
   }
-  return err(
-    new Error(
-      `データのバリデーション時にエラーが起きました:${v.summarize(validated.issues)}`,
-    ),
+  throw new Error(
+    `microCMSで取得したデータのバリデーション時にエラーが起きました: ${v.summarize(validated.issues)}`,
   );
 }
 
 const validators: {
-  [K in EndPoint]: (data: unknown) => Result<endPointDataType[K], Error>;
+  [K in EndPoint]: (data: unknown) => endPointDataType[K];
 } = {
   shop_indexes: (data) => runValidation(endPointData.shop_indexes, data),
   events: (data) => runValidation(endPointData.events, data),
@@ -44,14 +46,29 @@ const validators: {
   constants: (data) => runValidation(endPointData.constants, data),
 };
 
-export default function getMicroCmsData<E extends EndPoint>(
+export default async function getMicroCmsData<E extends EndPoint>(
   endpoint: E,
-): ResultAsync<endPointDataType[E], Error> {
-  const data = fromPromise(client.getAllContents({ endpoint }), (error) => {
-    return new Error(`microCMSでのデータ取得時にエラーが起きました:${error}`);
-  });
+): Promise<endPointDataType[E]> {
+  let data: unknown;
+  try {
+    if (isArrayEndPoint(endpoint)) {
+      data = await client.getAllContentIds({
+        endpoint,
+      });
+    } else {
+      data = await client.get({
+        endpoint,
+      });
+    }
+  } catch (error) {
+    throw new Error(`microCMSでのデータ取得時にエラーが起きました: ${error}`, {
+      cause: error,
+    });
+  }
+  return validators[endpoint](data);
+}
 
-  // validators[endpoint] は Validator<E> = (data: unknown) => Result<endPointDataType[E], Error>
-  // として正しく推論される(mapped typeのインデックスアクセスなのでTSが関連付けを保持できる)
-  return data.andThen((raw) => validators[endpoint](raw));
+// valibotの機能を利用
+function isArrayEndPoint(endpoint: EndPoint): endpoint is ArrayEndPoint {
+  return endPointData[endpoint].type === "array";
 }

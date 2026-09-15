@@ -75,17 +75,9 @@ const shopsSchema = v.object({
 });
 
 export const endPointData = {
-  shop_indexes: v.object({
-    contents: v.array(shopIndexesSchema),
-  }),
-  events: v.object({
-    contents: v.array(eventsSchema),
-  }),
-  exhibitions: v.object({
-    contents: v.array(exhibitionsSchema),
-  }),
-  shops: v.object({
-    contents: v.array(shopsSchema),
-  }),
+  shop_indexes: v.array(shopIndexesSchema),
+  events: v.array(eventsSchema),
+  exhibitions: v.array(exhibitionsSchema),
+  shops: v.array(shopsSchema),
   constants: constantsSchema,
 };
