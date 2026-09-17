@@ -1,5 +1,3 @@
-import getMicroCmsData from "../microcms";
-
-export default async function Page() {
-  return <div></div>;
+export default function Page() {
+  return <div>page</div>;
 }
