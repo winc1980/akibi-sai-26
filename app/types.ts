@@ -1,12 +1,16 @@
 import { endPointData } from "./valibot";
 import * as v from "valibot";
-export type ArrayEndPoint = {
-  [K in EndPoint]: endPointDataType[K] extends unknown[] ? K : never;
-}[EndPoint];
-export type SingleEndPoint = {
-  [K in EndPoint]: endPointDataType[K] extends unknown[] ? never : K;
-}[EndPoint];
-export type EndPoint = keyof typeof endPointData;
-export type endPointDataType = {
-  [key in keyof typeof endPointData]: v.InferOutput<(typeof endPointData)[key]>;
-};
+
+export type ShopData = v.InferOutput<typeof endPointData.shops>[number];
+
+export type ShopIndexData = v.InferOutput<
+  typeof endPointData.shop_indexes
+>[number];
+
+export type EventData = v.InferOutput<typeof endPointData.events>[number];
+
+export type ExhibitionData = v.InferOutput<
+  typeof endPointData.exhibitions
+>[number];
+
+export type ConstantsData = v.InferOutput<typeof endPointData.constants>;

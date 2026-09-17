@@ -1,12 +1,10 @@
 import { createClient } from "microcms-js-sdk";
-import {
-  ArrayEndPoint,
-  EndPoint,
-  endPointDataType,
-  SingleEndPoint,
-} from "./types";
 import * as v from "valibot";
 import { endPointData } from "./valibot";
+type EndPoint = keyof typeof endPointData;
+type endPointDataType = {
+  [key in keyof typeof endPointData]: v.InferOutput<(typeof endPointData)[key]>;
+};
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -69,6 +67,6 @@ export default async function getMicroCmsData<E extends EndPoint>(
 }
 
 // valibotの機能を利用
-function isArrayEndPoint(endpoint: EndPoint): endpoint is ArrayEndPoint {
+function isArrayEndPoint(endpoint: EndPoint): boolean {
   return endPointData[endpoint].type === "array";
 }
