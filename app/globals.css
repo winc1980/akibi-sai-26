@@ -1,1 +1,10 @@
 @import "tailwindcss";
+@theme {
+  --color-focused:var(--color-amber-400);
+  --color-unfocused:var(--color-white);
+  --color-food:var(--color-rose-400);
+  --color-goods:var(--color-orange-400);
+  --color-exgray:oklch(0.922,0,0);
+  
+  --color-blur_white:rgb(255,255,255,0.4)
+}

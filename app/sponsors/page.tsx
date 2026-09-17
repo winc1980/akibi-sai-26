@@ -1,4 +1,4 @@
-import getMicroCmsData from "../microcms";
+import getMicroCmsData from "@/lib/microcms";
 
 export default async function Page() {
   const data = await getMicroCmsData("constants");

@@ -1,11 +1,18 @@
 import * as v from "valibot";
 // 基本スキーマ
 const dateSchema = v.pipe(v.string(), v.isoTimestamp());
-const irohaSchema = v.pipe(
-  v.string(),
-  v.length(1),
-  v.regex(/^[ァ-ヶー]+$/, "イロハがカタカナになっていません"),
-);
+const irohaSchema = v.union([
+  v.literal("イ"),
+  v.literal("ロ"),
+  v.literal("ハ"),
+  v.literal("ニ"),
+  v.literal("ホ"),
+  v.literal("ヘ"),
+  v.literal("ト"),
+  v.literal("チ"),
+  v.literal("リ"),
+  v.literal("ヌ"),
+]);
 const microCmsImageSchema = v.object({
   url: v.pipe(v.string(), v.url()),
   height: v.pipe(v.number(), v.minValue(0)),
@@ -50,7 +57,6 @@ const shopIndexesSchema = v.object({
   ...microCmsListItemSchema.entries,
   iroha: irohaSchema,
   place: v.string(),
-  map_img: v.optional(microCmsImageSchema),
 });
 const constantsSchema = v.object({
   ...microCmsSingleDefaultSchema.entries,

@@ -1,4 +1,4 @@
-import { endPointData } from "./valibot";
+import { endPointData } from "@/lib/valibot";
 import * as v from "valibot";
 
 export type ShopData = v.InferOutput<typeof endPointData.shops>[number];
