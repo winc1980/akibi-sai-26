@@ -66,7 +66,11 @@ const constantsSchema = v.object({
 const shopsSchema = v.object({
   ...microCmsListItemSchema.entries,
   iroha: irohaSchema,
-  category: v.array(v.union([v.literal("goods"), v.literal("food")])),
+  category: v.pipe(
+    v.array(v.union([v.literal("goods"), v.literal("food")])),
+    v.length(1),
+    v.transform((categoryArray) => categoryArray[0]),
+  ),
   shop_name: v.string(),
   icon_img: microCmsImageSchema,
   short_description: v.optional(v.string()),

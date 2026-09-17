@@ -52,7 +52,7 @@ export default async function getMicroCmsData<E extends EndPoint>(
   let data: unknown;
   try {
     if (isArrayEndPoint(endpoint)) {
-      data = await client.getAllContentIds({
+      data = await client.getAllContents({
         endpoint,
       });
     } else {
