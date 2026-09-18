@@ -1,5 +1,8 @@
 {
-  "cSpell.words": ["iroha"],
+  "cSpell.words": [
+    "iroha",
+    "Kaku"
+  ],
 
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
