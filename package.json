@@ -6,7 +6,7 @@
     "dev": "next dev",
     "dev:wrangler": "wrangler pages dev out",
     "build": "next build",
-    "deploy": "wrangler pages deploy out",
+    "deploy": "wrangler pages deploy out --project-name=akibi-sai-2026",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
