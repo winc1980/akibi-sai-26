@@ -1,13 +1,27 @@
 @import "tailwindcss";
 @theme {
-  --color-focused:var(--color-amber-400);
-  --color-unfocused:var(--color-white);
-  --color-food:var(--color-rose-400);
-  --color-goods:var(--color-orange-400);
-  --color-exgray:oklch(0.922,0,0);
-  
-  --color-blur_white:rgb(255,255,255,0.4);
-  --color-default_black:rgb(36, 24, 19);
+  --color-primary: rgba(222, 92, 40, 0.8);
+  --color-secondary: rgb(165 197 84);
+  --color-tertiary: rgb(224 222 172);
+  --color-focused: var(--color-amber-400);
+  --color-unfocused: var(--color-white);
+  --color-food: var(--color-rose-400);
+  --color-goods: var(--color-orange-400);
+  --color-exgray: oklch(0.922, 0, 0);
+  --color-pod: rgb(252, 221, 114);
+  --color-lid: rgb(199, 176, 93);
 
-  --font-zen-kaku: var(--font-zen-kaku-gothic-new), sans-serif;
+  --color-blur_white: rgba(255, 255, 255, 0.4);
+  --color-akibi-black: rgb(36, 24, 19);
+  --color-winc-black: rgb(28, 25, 23);
+
+  --font-zen: var(--font-zen-kaku-gothic-new), sans-serif;
+  --font-yuji: var(--font-sans), "HGP行書体", "Yu Mincho", serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  outline: 1px solid red;
 }

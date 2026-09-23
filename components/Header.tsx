@@ -1,43 +1,22 @@
-import Link from "next/link";
-
 export default function Header() {
   return (
-    <header className="font-zen-kaku fixed top-0 left-0 z-50 flex w-dvw justify-start pl-8 text-[1.3rem] font-bold">
-      <AnimationLink _src="/たこさん.png" href="/">
-        トップ
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/maps">
-        マップ
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/events">
-        イベントスケジュール
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/shops">
-        模擬店
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/exhibitions">
-        展示
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/sponsors">
-        協賛
-      </AnimationLink>
+    <header className="fixed top-0 left-0 z-10 flex w-full scrollbar-none items-center justify-start gap-0 overflow-x-auto pl-8 text-[1.3rem] font-bold whitespace-nowrap [&::-webkit-scrollbar]:hidden">
+      <HeaderLink href="/">トップ</HeaderLink>
+      <HeaderLink href="/maps">マップ</HeaderLink>
+      <HeaderLink href="schedules">イベントスケジュール</HeaderLink>
+      <HeaderLink href="/shops">模擬店</HeaderLink>
+      <HeaderLink href="exhibitions">展示</HeaderLink>
+      <HeaderLink href="sponsors">協賛</HeaderLink>
     </header>
   );
 }
-function AnimationLink({
-  children,
-  href,
-  _src,
-}: {
-  children: string;
-  href: string;
-  _src: string;
-}) {
-  //   const [isClicked, setIsClicked] = useState(false);
 
+function HeaderLink({ children, href }: { children: string; href: string }) {
   return (
-    <div className="text-default_black relative mr-5 flex h-16 items-center justify-center">
-      <Link href={href}>{children}</Link>
+    <div className="text-black-soft relative mr-[1.2rem] flex h-16 w-auto items-center justify-center">
+      <a href={href} className="no-underline">
+        {children}
+      </a>
     </div>
   );
 }
