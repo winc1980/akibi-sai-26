@@ -1,10 +1,10 @@
 {
-  "name": "akibisai-2026",
+  "name": "akibi-sai-2026",
   "compatibility_date": "2026-09-19",
   "assets": {
     "directory": "./out",
     "not_found_handling": "404-page"
-  },
+  }
 //   "routes": [
 //     { "pattern": "2026.akibisai.com", "custom_domain": true }
 //   ]
