@@ -5,7 +5,7 @@ import Link from "next/link";
 type Toggle = () => void;
 export function Menu({ toggle }: { toggle: Toggle }) {
   return (
-    <div className="text-akibiBlack fixed top-0 z-50 h-screen w-full bg-amber-50">
+    <div className="text-akibiBlack fixed top-0 left-0 z-50 h-screen w-screen bg-amber-50">
       <button
         type="button"
         className="flex-cols mb-auto flex h-23 w-full items-center justify-end p-4"
@@ -22,9 +22,7 @@ export function Menu({ toggle }: { toggle: Toggle }) {
       </div>
 
       <Link
-        onClick={() => {
-          toggle();
-        }}
+        onClick={toggle}
         href="/"
         className="px-8 pt-6 pb-3 text-[15px] font-bold hover:underline"
       >
@@ -33,40 +31,40 @@ export function Menu({ toggle }: { toggle: Toggle }) {
       <div className="px-11 pt-2 pb-4">
         <div className="flex flex-col rounded-bl-2xl border-b-2 border-l-2 *:px-6">
           <Link
-            onClick={() => {
-              toggle();
-            }}
+            onClick={toggle}
             href="/#theme"
             className="py-2 text-nowrap hover:underline"
           >
             2026年度テーマ「お鍋」
           </Link>
-          <Link href="/#greeting" className="py-2 hover:underline">
+          <Link
+            onClick={toggle}
+            href="/#greeting"
+            className="py-2 hover:underline"
+          >
             ごあいさつ
           </Link>
-          <Link href="/#access" className="pt-2 pb-5 hover:underline">
+          <Link
+            onClick={toggle}
+            href="/#access"
+            className="pt-2 pb-5 hover:underline"
+          >
             アクセス
           </Link>
         </div>
       </div>
 
       <div className="flex h-100 w-full flex-col px-10 *:py-2 *:text-[15px]">
-        <Link href="/exhibitions" className="hover:underline">
+        <Link onClick={toggle} href="/exhibitions" className="hover:underline">
           展示
         </Link>
-        <Link
-          onClick={() => {
-            toggle();
-          }}
-          href="/shops"
-          className="hover:underline"
-        >
+        <Link onClick={toggle} href="/shops" className="hover:underline">
           模擬店
         </Link>
-        <Link href="/events" className="hover:underline">
+        <Link onClick={toggle} href="/events" className="hover:underline">
           イベントスケジュール
         </Link>
-        <Link href="/maps" className="hover:underline">
+        <Link onClick={toggle} href="/maps" className="hover:underline">
           マップ
         </Link>
       </div>
@@ -77,7 +75,7 @@ export function Menu({ toggle }: { toggle: Toggle }) {
 export function MenuBar({ toggle }: { toggle: Toggle }) {
   return (
     <div>
-      <div className="flex flex-col p-2">
+      <div className="fixed top-0 z-40 flex w-full flex-col p-2">
         <div className="flex h-17 w-full flex-row items-center justify-between rounded-2xl bg-amber-50 px-5">
           <img
             src="/akibi_logo.svg"
@@ -92,5 +90,3 @@ export function MenuBar({ toggle }: { toggle: Toggle }) {
     </div>
   );
 }
-
-function 
