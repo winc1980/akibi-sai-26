@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "cn": "^0.3.0",
+    "lucide-react": "^1.48.0",
     "microcms-js-sdk": "^3.5.0",
     "motion": "^13.4.0",
     "next": "16.3.5",
