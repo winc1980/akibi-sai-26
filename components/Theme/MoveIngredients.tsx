@@ -16,10 +16,10 @@ export default function MoveIngredients({
   return (
     <div
       id="theme"
-      className="font-zen flex w-full flex-col items-center justify-around gap-y-8 pt-28 md:gap-x-24 md:px-8 lg:flex-row"
+      className="font-zen flex w-full flex-col items-center justify-around gap-y-8 overflow-x-clip pt-28 md:gap-x-24 md:px-8 lg:flex-row"
     >
       {children}
-      <div className="grid w-[90vw] place-items-center lg:w-[50vw]">
+      <div className="grid w-[90vw] place-items-center overflow-x-clip lg:w-[50vw]">
         <motion.img
           initial={{ opacity: 1, scale: 1, rotate: 0 }}
           whileInView={{ scale: [1, 1.1, 0], rotate: [0, 0, 360] }}
