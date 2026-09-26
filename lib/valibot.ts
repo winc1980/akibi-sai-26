@@ -66,8 +66,6 @@ const constantsSchema = v.object({
   map_img: v.array(microCmsImageSchema),
   shop_map_img: v.array(microCmsImageSchema),
   time_schedule_img: v.array(microCmsImageSchema),
-  sponsors_higher: v.array(microCmsImageSchema),
-  sponsors_normal: v.array(microCmsImageSchema),
 });
 const shopsSchema = v.object({
   ...microCmsListItemSchema.entries,
