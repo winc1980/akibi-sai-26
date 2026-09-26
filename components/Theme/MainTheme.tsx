@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "motion/react";
 import MoveIngredients from "./MoveIngredients";
 
 export default function MainTheme({ theme }: { theme: string }) {
@@ -15,18 +17,38 @@ export default function MainTheme({ theme }: { theme: string }) {
           </p>
           <p className="text-[20cqw] leading-none lg:text-[10cqw]">お鍋</p>
         </div>
-        <img
-          className="absolute top-[-10%] left-[-20%] w-1/2"
+        <motion.img
+          style={{
+            top: "-10%",
+            // left: "-20%",
+          }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          initial={{
+            left: "-20%",
+          }}
+          whileInView={{
+            left: "60%",
+          }}
+          className="absolute w-1/2"
           src="/mainTheme/tofu.png"
           alt="豆腐"
         />
-        <img
-          className="absolute top-[-30%] right-[-10%] w-1/2"
+        <motion.img
+          style={{
+            top: "-30%",
+            right: "-10%",
+          }}
+          className="absolute w-1/2"
           src="/mainTheme/shiitake.png"
           alt="しいたけ"
         />
-        <img
-          className="absolute top-[-40%] left-[-10%] w-[40%]"
+        <motion.img
+          style={{
+            top: "-40%",
+            left: "-10%",
+          }}
+          className="absolute w-[40%]"
           src="/mainTheme/kamaboko.png"
           alt="かまぼこ"
         />

@@ -14,13 +14,13 @@ export function GoogleMap() {
 export function Access() {
   return (
     <div className="w-full max-w-150">
-      <div className="font-zen text-black-soft flex max-w-150 items-center justify-center gap-16 rounded-[20px] bg-white/20 py-2 pl-16 shadow-[0_0_1px_hsl(0deg_0%_0%/0.075),0_0_2px_hsl(0deg_0%_0%/0.075),0_0_4px_hsl(0deg_0%_0%/0.075),0_0_8px_hsl(0deg_0%_0%/0.075),0_0_16px_hsl(0deg_0%_0%/0.075)]">
-        <div className="flex flex-col items-start justify-center">
+      <div className="font-zen text-black-soft flex max-w-150 items-center justify-center gap-16 rounded-[20px] bg-white/60 py-2 pl-8 font-semibold shadow-xl">
+        <div className="flex w-full flex-col items-start justify-center text-start">
           <h2 className="pt-4 pb-4 text-center text-[1.5rem]">
             秋田公立美術大学
           </h2>
 
-          <div className="text-left text-[1.125rem] font-semibold">
+          <div className="xs:text-[1rem] w-full text-[0.8rem] break-all sm:text-lg">
             <p>〒010-1632 秋田県秋田市新屋大川町12-3</p>
 
             <div className="flex flex-col gap-2">
@@ -34,11 +34,6 @@ export function Access() {
                 <br />
                 新屋線「美術大学前」下車　徒歩1分
               </p>
-            </div>
-
-            <div className="-mx-3 flex items-center">
-              <div className="bg-black-soft h-0.5 w-96" />
-              <div className="bg-black-soft h-4 w-4 [clip-path:polygon(0_0,100%_50%,0_100%,30%_50%)]" />
             </div>
           </div>
         </div>
