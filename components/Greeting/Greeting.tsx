@@ -28,7 +28,7 @@ export default function Greeting({ message: greeting }: { message: string }) {
       </motion.div>
 
       <motion.div
-        className="font-zen text-black-soft rounded-[3rem] bg-white/20 p-4 pr-4 pl-8 text-[1.2rem] leading-10 font-bold whitespace-pre-wrap"
+        className="font-zen text-black-soft rounded-[3rem] bg-white/60 p-4 pr-4 pl-8 text-[1.2rem] leading-15 font-bold whitespace-pre-wrap"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}

@@ -11,12 +11,13 @@
   --color-pod: rgb(252, 221, 114);
   --color-lid: rgb(199, 176, 93);
 
-  --color-blur_white: rgba(255, 255, 255, 0.4);
   --color-akibi-black: rgb(36, 24, 19);
   --color-winc-black: rgb(28, 25, 23);
 
   --font-zen: var(--font-zen-kaku-gothic-new), sans-serif;
   --font-yuji: var(--font-sans), "HGP行書体", "Yu Mincho", serif;
+
+  --breakpoint-xs: 30rem;
 }
 html {
   scroll-behavior: smooth;
