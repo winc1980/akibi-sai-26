@@ -4,7 +4,7 @@ import { Access, GoogleMap } from "./MapCards";
 
 export default function Maps() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center gap-80 overflow-x-clip pt-80 pb-20 sm:gap-100 sm:pt-100 md:flex-row md:gap-7">
+    <div className="relative flex w-full flex-col items-center justify-center gap-80 overflow-x-clip pt-80 pb-20 sm:gap-100 sm:pt-100 md:flex-row md:gap-2 md:px-2 lg:gap-7">
       <PodShapedCardContainer label="アクセス">
         <Access />
       </PodShapedCardContainer>
@@ -23,7 +23,7 @@ function PodShapedCardContainer({
   label: string;
 }) {
   return (
-    <div className="w-[80%] max-w-xl pt-25 md:w-full">
+    <div className="xs:w-[80%] w-[90%] pt-25 sm:w-[85%] md:w-[95%] md:max-w-md lg:w-full lg:max-w-xl">
       <motion.div
         className="card-container bg-pod border-t-lid relative z-auto mx-auto flex max-h-48 w-full max-w-xl items-center justify-center rounded-b-[5rem] border-t-4 text-center"
         initial="offscreen"
@@ -44,7 +44,7 @@ function PodShapedCardContainer({
               transition: {
                 type: "spring",
                 bounce: 0.4,
-                duration: 0.8,
+                duration: 0.6,
               },
             },
           }}
