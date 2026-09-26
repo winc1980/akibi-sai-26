@@ -6,7 +6,7 @@ export default function AnimationTheme() {
     <motion.div
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ amount: 1 }}
+      viewport={{ amount: 0.5 }}
 
       className="relative grid w-[90vw] place-items-center text-center lg:w-[50vw]"
     >
