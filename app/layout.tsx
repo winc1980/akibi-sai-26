@@ -22,7 +22,7 @@ const yujiBoku = Yuji_Boku({
 
 export const metadata: Metadata = {
   title: "あきび祭2026",
-  description: "秋田公立美術大学の学園祭、あきび祭2025の公式サイト",
+  description: "秋田公立美術大学の学園祭、あきび祭2026の公式サイト",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
