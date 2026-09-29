@@ -26,9 +26,6 @@ export default function Footer() {
             </div>
 
             <div className="flex w-full flex-col gap-1 text-center text-sm md:text-start">
-              <Link href="/exhibitions" className="hover:underline">
-                展示
-              </Link>
               <Link href="/shops" className="hover:underline">
                 模擬店
               </Link>
