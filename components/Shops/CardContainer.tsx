@@ -1,5 +1,6 @@
 "use client";
 import { ShopData } from "@/lib/types";
+import { cn } from "cn";
 import ShopItem, { ViewType } from "./ShopItem";
 import { useState } from "react";
 import { List, ListFilterPlus, Table, X } from "lucide-react";
@@ -27,11 +28,12 @@ export default function CardContainer({ shops }: { shops: ShopData[] }) {
       </div>
 
       <div
-        className={`mt-20 ${
+        className={cn(
+          "mt-20",
           viewType === "card"
             ? "grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
-            : "mx-20 flex flex-col"
-        }`}
+            : "mx-20 flex w-full flex-col",
+        )}
       >
         {category.includes("food") &&
           shops
@@ -97,14 +99,24 @@ function PopUpFilter({
           multiple
         >
           <ToggleGroupItem
-            className={`border-focused w-full border-3 py-4 text-lg ${category.includes("food") ? "bg-focused text-unfocused" : "bg-unfocused text-focused"}`}
+            className={cn(
+              "border-focused w-full border-3 py-4 text-lg",
+              category.includes("food")
+                ? "bg-focused text-unfocused"
+                : "bg-unfocused text-focused",
+            )}
             value="food"
             aria-label="Toggle food"
           >
             飲食
           </ToggleGroupItem>
           <ToggleGroupItem
-            className={`border-focused w-full border-3 py-4 text-lg ${category.includes("goods") ? "bg-focused text-unfocused" : "bg-unfocused text-focused"}`}
+            className={cn(
+              "border-focused w-full border-3 py-4 text-lg",
+              category.includes("goods")
+                ? "bg-focused text-unfocused"
+                : "bg-unfocused text-focused",
+            )}
             value="goods"
             aria-label="Toggle goods"
           >
@@ -124,10 +136,13 @@ function ToggleViewType({
   SetViewType: (arg: ViewType) => void;
 }) {
   return (
-    <div className="flex gap-1">
+    <div className="hidden gap-1 md:flex">
       <button
         onClick={() => SetViewType("card")}
-        className={`border-focused flex h-12 w-20 items-center justify-center rounded-l-full border-4 pr-2 pl-4 ${viewType === "card" ? "bg-focused" : "bg-unfocused"} `}
+        className={cn(
+          "border-focused flex h-12 w-20 items-center justify-center rounded-l-full border-4 pr-2 pl-4",
+          viewType === "card" ? "bg-focused" : "bg-unfocused",
+        )}
       >
         <Table
           className={viewType === "card" ? "text-unfocused" : "text-focused"}
@@ -135,7 +150,10 @@ function ToggleViewType({
       </button>
       <button
         onClick={() => SetViewType("list")}
-        className={`border-focused flex h-12 w-20 items-center justify-center rounded-r-full border-2 pr-4 pl-2 ${viewType === "list" ? "bg-focused" : "bg-unfocused"}`}
+        className={cn(
+          "border-focused flex h-12 w-20 items-center justify-center rounded-r-full border-4 pr-4 pl-2",
+          viewType === "list" ? "bg-focused" : "bg-unfocused",
+        )}
       >
         <List
           className={viewType === "list" ? "text-unfocused" : "text-focused"}
@@ -160,7 +178,7 @@ function SearchInput({
         onChange={(e) => {
           setWords(e.target.value);
         }}
-        placeholder="企画名を入力"
+        placeholder="キーワードで検索"
       />
     </>
   );

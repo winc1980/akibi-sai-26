@@ -1,6 +1,8 @@
 import IrohaMaps from "@/components/Shops/IrohaMaps";
+import { WhiteTextBox } from "@/components/WhiteTextBox";
 import getMicroCmsData from "@/lib/microcms";
 import { ShopData, ShopIndexData } from "@/lib/types";
+import { cn } from "cn";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Handbag, MapPin } from "lucide-react";
 import * as motion from "motion/react-client";
@@ -71,12 +73,18 @@ function ShopPage({
       >
         <div className="relative w-full max-w-sm shrink-0">
           <div
-            className={`absolute -top-4 -right-2 z-10 flex h-11 w-28 items-center justify-center rounded-full ${isFoodShop ? "bg-food" : "bg-goods"} text-lg font-bold text-white shadow-md`}
+            className={cn(
+              "absolute -top-4 -right-2 z-10 flex h-11 w-28 items-center justify-center rounded-full text-lg font-bold text-white shadow-md",
+              isFoodShop ? "bg-food" : "bg-goods",
+            )}
           >
             {isFoodShop ? "飲食" : "物販"}
           </div>
           <div
-            className={`overflow-hidden rounded-[2.5rem] border-8 bg-white shadow-xl ${isFoodShop ? "border-food" : "border-goods"}`}
+            className={cn(
+              "overflow-hidden rounded-[2.5rem] border-8 bg-white shadow-xl",
+              isFoodShop ? "border-food" : "border-goods",
+            )}
           >
             <img
               className="max-h-104 w-full object-contain p-4"
@@ -94,7 +102,10 @@ function ShopPage({
           {shop.short_description && (
             <p className="flex items-center gap-3 rounded-full bg-white/60 px-6 py-3 text-lg font-bold">
               <Handbag
-                className={`h-6 w-6 shrink-0 ${isFoodShop ? "text-food" : "text-goods"}`}
+                className={cn(
+                  "h-6 w-6 shrink-0",
+                  isFoodShop ? "text-food" : "text-goods",
+                )}
               />
               {shop.short_description}
             </p>
@@ -102,7 +113,10 @@ function ShopPage({
 
           <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
             <span
-              className={`flex items-center gap-2 rounded-full ${isFoodShop ? "bg-food" : "bg-goods"} px-5 py-2.5 font-bold text-white shadow-sm`}
+              className={cn(
+                "flex items-center gap-2 rounded-full px-5 py-2.5 font-bold text-white shadow-sm",
+                isFoodShop ? "bg-food" : "bg-goods",
+              )}
             >
               <MapPin className="h-5 w-5" />
               いろは「{shop.iroha}」
@@ -151,9 +165,9 @@ function ShopSection({
         <img className="w-16 -rotate-6 sm:w-20" src={image} alt="" />
         <h2 className="text-5xl font-bold sm:text-6xl">{title}</h2>
       </div>
-      <div className="mt-8 w-full rounded-[3rem] bg-white/60 px-6 py-8 sm:px-12 sm:py-10">
+      <WhiteTextBox className="mt-8 w-full px-6 py-8 sm:px-12 sm:py-10">
         {children}
-      </div>
+      </WhiteTextBox>
     </section>
   );
 }

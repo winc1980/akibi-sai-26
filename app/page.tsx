@@ -7,9 +7,8 @@ import getMicroCmsData from "@/lib/microcms";
 export default async function Home() {
   const data = await getMicroCmsData("constants");
   return (
-    <div>
+    <div className="relative">
       <MainVisual />
-
       <MainTheme theme={data.theme} />
       <Greeting message={data.head_greetings} />
       <Maps />

@@ -43,15 +43,8 @@ const eventsSchema = v.object({
     v.array(v.union([v.literal("1"), v.literal("2")])),
     v.transform((days) => days.map((day) => Number(day))),
   ),
-  timing_start: v.pipe(v.number(), v.minValue(0), v.maxValue(14)),
-  timing_end: v.pipe(v.number(), v.minValue(0), v.maxValue(14)),
-});
-const exhibitionsSchema = v.object({
-  ...microCmsListItemSchema.entries,
-  display_id: v.number(),
-  title: v.string(),
-  images: v.array(microCmsImageSchema),
-  description: v.string(),
+  timing_start: v.pipe(v.number(), v.minValue(8), v.maxValue(20)),
+  timing_end: v.pipe(v.number(), v.minValue(8), v.maxValue(20)),
 });
 const shopIndexesSchema = v.object({
   ...microCmsListItemSchema.entries,
@@ -85,7 +78,6 @@ const shopsSchema = v.object({
 export const endPointData = {
   shop_indexes: v.array(shopIndexesSchema),
   events: v.array(eventsSchema),
-  exhibitions: v.array(exhibitionsSchema),
   shops: v.array(shopsSchema),
   constants: constantsSchema,
 };

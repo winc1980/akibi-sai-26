@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Zen_Kaku_Gothic_New, Yuji_Boku } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import BackGround from "@/components/BackGround";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer/Footer";
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <meta name="apple-mobile-web-app-title" content="あきび祭2026" />
       </head>
-      <body className="flex min-h-full w-full flex-col">
+      <body className="flex min-h-full w-full flex-col text-akibi-black font-zen font-semibold">
         <BackGround />
         <Header />
         {children}
