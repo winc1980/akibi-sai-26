@@ -7,7 +7,6 @@ export default function AnimationTheme() {
       initial="offscreen"
       whileInView="onscreen"
       viewport={{ amount: 0.5 }}
-
       className="relative grid w-[90vw] place-items-center text-center lg:w-[50vw]"
     >
       <img
@@ -26,8 +25,8 @@ export default function AnimationTheme() {
         }}
 
         transition={{
-          type: "spring",
-          duration: 0.8,
+          duration: 0.4,
+          delay: 0.2,
         }}
         className="text-akibi-black font-yuji absolute top-[25%] flex flex-col gap-0 text-center font-bold lg:top-[20%]"
       >
@@ -79,6 +78,36 @@ export default function AnimationTheme() {
         }}
         src="/mainTheme/kamaboko.png"
         alt="かまぼこ"
+      />
+      <AnimationImage
+        initial={{
+          top: "50%",
+          left: "40%",
+          width: "1%",
+        }}
+
+        whileInView={{
+          top: "0%",
+          left: "50%",
+          width: "70%",
+        }}
+        src="/mainTheme/takosan.png"
+        alt="たこさん"
+      />
+      <AnimationImage
+        initial={{
+          top: "50%",
+          left: "20%",
+          width: "1%",
+        }}
+
+        whileInView={{
+          top: "-60%",
+          left: "30%",
+          width: "40%",
+        }}
+        src="/mainTheme/carrot.png"
+        alt="にんじん"
       />
     </motion.div>
   );
