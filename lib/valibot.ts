@@ -37,7 +37,14 @@ const eventsSchema = v.object({
   ...microCmsListItemSchema.entries,
   organization: v.string(),
   name: v.string(),
-  place: v.optional(v.string()),
+  place: v.union([
+    v.literal("体育館"),
+    v.literal("テニスコート"),
+    v.literal("屋外ステージ図書館横"),
+    v.literal("屋外ステージ　サークルプラザ"),
+    v.literal("地域交流棟　多目的ホール"),
+    v.literal("all_day")
+  ]),
   description: v.string(),
   days: v.pipe(
     v.array(v.union([v.literal("1"), v.literal("2")])),
