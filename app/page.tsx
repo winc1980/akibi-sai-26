@@ -9,7 +9,6 @@ export default async function Home() {
   return (
     <div>
       <MainVisual />
-
       <MainTheme theme={data.theme} />
       <Greeting message={data.head_greetings} />
       <Maps />

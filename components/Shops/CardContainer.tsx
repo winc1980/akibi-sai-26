@@ -124,7 +124,7 @@ function ToggleViewType({
   SetViewType: (arg: ViewType) => void;
 }) {
   return (
-    <div className="flex gap-1">
+    <div className="hidden gap-1 md:flex">
       <button
         onClick={() => SetViewType("card")}
         className={`border-focused flex h-12 w-20 items-center justify-center rounded-l-full border-4 pr-2 pl-4 ${viewType === "card" ? "bg-focused" : "bg-unfocused"} `}

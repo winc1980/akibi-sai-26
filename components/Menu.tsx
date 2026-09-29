@@ -5,7 +5,7 @@ import Link from "next/link";
 type Toggle = () => void;
 export function Menu({ toggle }: { toggle: Toggle }) {
   return (
-    <div className="text-akibiBlack fixed top-0 left-0 z-50 h-screen w-screen bg-amber-50">
+    <div className="text-akibi-black fixed top-0 left-0 z-50 h-screen w-screen bg-amber-50">
       <button
         type="button"
         className="flex-cols mb-auto flex h-23 w-full items-center justify-end p-4"
@@ -82,7 +82,7 @@ export function MenuBar({ toggle }: { toggle: Toggle }) {
             alt="あきびアイコン"
             className="h-13 w-13"
           />
-          <button type="button" onClick={toggle}>
+          <button type="button" onClick={() => toggle()}>
             <MenuIcon className="h-5 w-5" />
           </button>
         </div>
