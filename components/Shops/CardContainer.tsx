@@ -135,7 +135,7 @@ function ToggleViewType({
       </button>
       <button
         onClick={() => SetViewType("list")}
-        className={`border-focused flex h-12 w-20 items-center justify-center rounded-r-full border-2 pr-4 pl-2 ${viewType === "list" ? "bg-focused" : "bg-unfocused"}`}
+        className={`border-focused flex h-12 w-20 items-center justify-center rounded-r-full border-4 pr-4 pl-2 ${viewType === "list" ? "bg-focused" : "bg-unfocused"}`}
       >
         <List
           className={viewType === "list" ? "text-unfocused" : "text-focused"}
