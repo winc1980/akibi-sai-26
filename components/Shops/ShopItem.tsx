@@ -1,4 +1,6 @@
 import { ShopData } from "@/lib/types";
+import { cn } from "@/lib/utils";
+import { WhiteTextBox } from "../WhiteTextBox";
 export type ViewType = "card" | "list";
 export default function ShopItem({
   shop,
@@ -7,21 +9,27 @@ export default function ShopItem({
   shop: ShopData;
   viewType: ViewType;
 }) {
-  // ホバーしたときに影を出すようにする
   return viewType === "card" ? (
     <CardView shop={shop} />
   ) : (
-    <ListView shop={shop} />
+    <>
+      <ListView className="hidden md:flex" shop={shop} />
+      <CardView className="block md:hidden" shop={shop} />
+    </>
   );
 }
 
-function ListView({ shop }: { shop: ShopData }) {
+function ListView({ shop, className }: { shop: ShopData; className?: string }) {
   // 展示に移行する可能性あり
   const isFoodShop = shop.category === "food";
   return (
     <a
       href={`/shops/${shop.id}`}
-      className={`relative flex w-full max-w-dvw justify-start border-t-2 px-20 pb-20 ${isFoodShop ? "border-t-food" : "border-t-goods"} pt-12`}
+      className={cn(
+        "relative w-full max-w-dvw items-center justify-start gap-4 border-t-2 px-20 pt-12 pb-20",
+        isFoodShop ? "border-t-food" : "border-t-goods",
+        className,
+      )}
     >
       <div
         className={`absolute -top-5 -left-5 flex h-10 w-40 items-center justify-center rounded-full ${isFoodShop ? "bg-food" : "bg-goods"}`}
@@ -39,16 +47,18 @@ function ListView({ shop }: { shop: ShopData }) {
           alt={shop.shop_name}
         />
       </div>
-      <div className="bg-blur_white ml-20 flex flex-col gap-6 rounded-2xl px-5 pt-10 pb-8">
-        <p className="text-start text-4xl">{shop.shop_name}</p>
+      <WhiteTextBox className="px-5 py-6">
+        <p className="font-yuji text-start text-4xl font-bold">
+          {shop.shop_name}
+        </p>
         <p>{shop.long_description}</p>
         <p>いろは：{shop.iroha}</p>
-      </div>
+      </WhiteTextBox>
     </a>
   );
 }
 
-function CardView({ shop }: { shop: ShopData }) {
+function CardView({ shop, className }: { shop: ShopData; className?: string }) {
   // ボーダーの色、カテゴリーの背景色を後で変更する
   const isFoodShop = shop.category === "food";
 
@@ -63,7 +73,11 @@ function CardView({ shop }: { shop: ShopData }) {
         <p> {isFoodShop ? "飲食" : "物販"}</p>
       </div>
       <div
-        className={`h-full overflow-hidden rounded-xl border-8 ${isFoodShop ? "border-food" : "border-goods"} bg-white/80`}
+        className={cn(
+          "h-full overflow-hidden rounded-xl border-8 bg-white/80",
+          isFoodShop ? "border-food" : "border-goods",
+          className,
+        )}
       >
         <div className="text-akibi-black mb-4 flex flex-col">
           <div className="flex max-h-96 items-center justify-center overflow-hidden">
