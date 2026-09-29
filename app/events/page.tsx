@@ -1,12 +1,26 @@
-import { useState } from "react";
+// import { useState } from "react";
+import getMicroCmsData from "@/lib/microcms";
+import { EventData } from "@/lib/types";
 
 // const Place = [A, B, C, D, E];
 
-export default function App() {
+export default async function App() {
+  const events = await getMicroCmsData("events");
   const TIME_START = 10;
   const TIME_END = 17;
   const CELL_HEIGHT = 36;
 
+  const allDayEvents = events.filter(
+    (event) => event.timing_end - event.timing_start === TIME_END - TIME_START,
+  );
+  const scheduledEvents = events.filter(
+    (event) => event.timing_end - event.timing_start !== TIME_END - TIME_START,
+  );
+  const scheduledEventPlaces = [
+    ...new Set(scheduledEvents.map((event) => event.place)),
+  ];
+
+  const byPlaces=Object.groupBy((scheduledEventPlaces,({place})=>))
   return (
     <div className="font-zen-kaku h-full w-full flex-row p-20">
       {/* 場所です */}
@@ -15,21 +29,15 @@ export default function App() {
         <div className="w-10" />
 
         <div className="grid flex-1 grid-cols-5 gap-2">
-          <div className="text-amber-50h-10 flex h-10 items-center justify-center rounded-md bg-blue-500 p-2 text-xs">
-            場所
-          </div>
-          <div className="text-amber-50h-10 flex h-10 items-center justify-center rounded-md bg-blue-400 p-2 text-xs">
-            場所
-          </div>
-          <div className="text-amber-50h-10 flex h-10 items-center justify-center rounded-md bg-blue-300 p-2 text-xs">
-            場所
-          </div>
-          <div className="text-amber-50h-10 flex h-10 items-center justify-center rounded-md bg-blue-200 p-2 text-xs">
-            場所
-          </div>
-          <div className="text-amber-50h-10 flex h-10 items-center justify-center rounded-md bg-blue-100 p-2 text-xs">
-            場所
-          </div>
+          {scheduledEventPlaces.map((place, i) => (
+            <div
+              key={i}
+              className="text-amber-50h-10 flex h-10 items-center justify-center rounded-md bg-blue-500 p-2 text-xs"
+            >
+              {place}
+            </div>
+          ))}
+
           {/* {Place.map((placeName)=>
     <div>PlaceName</div>)} */}
         </div>
@@ -70,17 +78,21 @@ export default function App() {
             ),
           )}
           <div className="absolute grid h-full w-full grid-cols-5 gap-2 pt-1.75">
-            {/* {Array.map((value.starttime/endtime/place,i)=>( */}
-            <div
-              className="flex items-center justify-center rounded-md bg-amber-700 p-2 text-xs text-amber-50"
-              style={{
-                height: CELL_HEIGHT,
-                // *timeend-timestart+1
-              }}
-            >
-              データのタイトル
-            </div>
-            {/* ))} */}
+            {scheduledEvents.map((event, i) => {
+              return (
+                <div
+                  key={i}
+                  className="flex items-center justify-center rounded-md bg-amber-700 p-2 text-xs text-amber-50"
+                  style={{
+                    top: event.timing_start * i + 1,
+                    height:
+                      CELL_HEIGHT * (event.timing_end - event.timing_start + 1),
+                  }}
+                >
+                  {event.name}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
