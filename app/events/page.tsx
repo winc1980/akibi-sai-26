@@ -1,37 +1,46 @@
-import getMicroCmsData from "@/lib/microcms";
+export default function App() {
+  const TIME_START = 10;
+  const TIME_END = 17;
+  const CELL_HEIGHT = 80;
+  const TEXT_HEIGHT = 10;
 
-const timeLabels = [
-  "10:00",
-  "10:30",
-  "11:00",
-  "11:30",
-  "12:00",
-  "12:30",
-  "13:00",
-  "13:30",
-  "14:00",
-  "14:30",
-  "15:00",
-  "15:30",
-  "16:00",
-  "16:30",
-  "17:00",
-];
+  return (
+    <div className="w-full p-20">
+      <div className="flex">
+        {/* time label */}
 
-const data = await getMicroCmsData("events");
+        <div className="relative h-full w-10 flex-col justify-start">
+          {Array.from({ length: (TIME_END - TIME_START) * 2 + 1 }).map(
+            (_, i) => (
+              <div
+                className="absolute"
+                style={{
+                  top: (i * CELL_HEIGHT) / 2,
+                }}
+                key={i}
+              >
+                {i % 2 === 0
+                  ? `${TIME_START + i / 2}:00`
+                  : `${TIME_START + (i - 1) / 2}:30`}
+              </div>
+            ),
+          )}
+        </div>
 
-export default async function Page() {
-  return <div>page</div>;
+        {/* line */}
+
+        <div className="relative flex w-100 flex-col">
+          {Array.from({ length: (TIME_END - TIME_START + 1) * 2 - 1 }).map(
+            (_, i) => (
+              <div
+                key={i}
+                className={`absolute w-100 border-t ${i % 2 === 0 ? "border-solid" : "border-dashed"}`}
+                style={{ top: (i * CELL_HEIGHT) / 2 + TEXT_HEIGHT / 2 }}
+              ></div>
+            ),
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
-
-function isallDayEvents(x: number, y: number) {
-  const TIME_RANGE_START = 0;
-  const TIME_RANGE_END = 14;
-  return x === TIME_RANGE_START && y === TIME_RANGE_END;
-}
-
-const scheduledEvents = data.filter((data) => !isallDayEvents);
-const allDayEvents = data.filter((data) => isallDayEvents);
-const scheduledEventPlaces = Array.from(
-  new Set(scheduledEvents.map((event) => event.place)),
-);
