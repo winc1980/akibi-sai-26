@@ -25,9 +25,6 @@ export default function Header() {
         <Link href="/" className="font-bold hover:underline">
           トップ
         </Link>
-        <Link href="/exhibitions" className="hover:underline">
-          展示
-        </Link>
         <Link href="/shops" className="hover:underline">
           模擬店
         </Link>

@@ -178,7 +178,7 @@ function SearchInput({
         onChange={(e) => {
           setWords(e.target.value);
         }}
-        placeholder="企画名を入力"
+        placeholder="キーワードで検索"
       />
     </>
   );

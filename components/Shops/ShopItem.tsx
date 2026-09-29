@@ -1,6 +1,7 @@
 import { ShopData } from "@/lib/types";
 import { cn } from "cn";
 import { WhiteTextBox } from "../WhiteTextBox";
+import { MapPin } from "lucide-react";
 export type ViewType = "card" | "list";
 export default function ShopItem({
   shop,
@@ -58,7 +59,15 @@ function ListView({ shop, className }: { shop: ShopData; className?: string }) {
           {shop.shop_name}
         </p>
         <p>{shop.long_description}</p>
-        <p>いろは：{shop.iroha}</p>
+        <span
+          className={cn(
+            "flex h-15 w-60 items-center justify-center gap-2 rounded-full px-5 py-2.5 font-bold text-white shadow-sm",
+            isFoodShop ? "bg-food" : "bg-goods",
+          )}
+        >
+          <MapPin className="h-5 w-5" />
+          いろは「{shop.iroha}」
+        </span>
       </WhiteTextBox>
     </a>
   );
@@ -71,11 +80,11 @@ function CardView({ shop, className }: { shop: ShopData; className?: string }) {
   return (
     <a
       href={`/shops/${shop.id}`}
-      className="relative col-span-1 transition-all duration-300 ease-in-out hover:scale-105"
+      className="relative col-span-1 h-full transition-all duration-300 ease-in-out hover:scale-105"
     >
       <div
         className={cn(
-          "font-zen absolute -top-5 -right-5 flex h-10 w-40 items-center justify-center rounded-full font-semibold",
+          "font-zen absolute -top-5 -right-5 flex h-10 w-40 items-center justify-center rounded-full font-semibold text-white",
           isFoodShop ? "bg-food" : "bg-goods",
         )}
       >
@@ -88,7 +97,7 @@ function CardView({ shop, className }: { shop: ShopData; className?: string }) {
           className,
         )}
       >
-        <div className="text-akibi-black mb-4 flex flex-col">
+        <div className="text-akibi-black mb-4 flex flex-col md:h-full">
           <div className="flex max-h-96 items-center justify-center overflow-hidden">
             <img
               className="h-full w-full object-cover"
@@ -102,8 +111,16 @@ function CardView({ shop, className }: { shop: ShopData; className?: string }) {
             </div>
             <p className="font-zen font-semibold">{shop.long_description}</p>
           </div>
-          <div className="font-zen my-3 flex items-end px-4 text-start font-semibold">
-            <p>いろは：{shop.iroha}</p>
+          <div className="font-zen my-3 flex h-full flex-col justify-end px-4 text-start font-semibold">
+            <span
+              className={cn(
+                "flex h-15 w-60 items-center justify-center gap-2 rounded-full px-5 py-2.5 font-bold text-white shadow-sm",
+                isFoodShop ? "bg-food" : "bg-goods",
+              )}
+            >
+              <MapPin className="h-5 w-5" />
+              いろは「{shop.iroha}」
+            </span>
           </div>
         </div>
       </div>
