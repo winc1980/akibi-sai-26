@@ -1,21 +1,20 @@
 export default function App() {
   const TIME_START = 10;
   const TIME_END = 17;
-  const CELL_HEIGHT = 80;
-  const TEXT_HEIGHT = 10;
+  const CELL_HEIGHT = 36;
 
   return (
     <div className="w-full p-20">
       <div className="flex">
         {/* time label */}
 
-        <div className="relative h-full w-10 flex-col justify-start">
+        <div className="relative h-full w-12 flex-col justify-start text-[15px] leading-3.5">
           {Array.from({ length: (TIME_END - TIME_START) * 2 + 1 }).map(
             (_, i) => (
               <div
-                className="absolute"
+                className="absolute bg-amber-100/20"
                 style={{
-                  top: (i * CELL_HEIGHT) / 2,
+                  top: i * CELL_HEIGHT,
                 }}
                 key={i}
               >
@@ -29,13 +28,13 @@ export default function App() {
 
         {/* line */}
 
-        <div className="relative flex w-100 flex-col">
+        <div className="relative flex w-full flex-col">
           {Array.from({ length: (TIME_END - TIME_START + 1) * 2 - 1 }).map(
             (_, i) => (
               <div
                 key={i}
-                className={`absolute w-100 border-t ${i % 2 === 0 ? "border-solid" : "border-dashed"}`}
-                style={{ top: (i * CELL_HEIGHT) / 2 + TEXT_HEIGHT / 2 }}
+                className={`absolute w-150 border-t ${i % 2 === 0 ? "border-solid" : "border-dashed"}`}
+                style={{ top: i * CELL_HEIGHT + 14 / 2 }}
               ></div>
             ),
           )}
