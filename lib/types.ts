@@ -1,4 +1,4 @@
-import { endPointData } from "@/lib/valibot";
+import { endPointData, eventsPlacesSchema } from "@/lib/valibot";
 import * as v from "valibot";
 
 export type ShopData = v.InferOutput<typeof endPointData.shops>[number];
@@ -14,3 +14,5 @@ export type ExhibitionData = v.InferOutput<
 >[number];
 
 export type ConstantsData = v.InferOutput<typeof endPointData.constants>;
+
+export type EventsPlaces = v.InferOutput<typeof eventsPlacesSchema>;

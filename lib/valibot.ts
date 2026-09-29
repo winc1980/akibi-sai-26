@@ -33,25 +33,28 @@ const microCmsListItemSchema = v.object({
   id: v.string(),
 });
 
+export const eventsPlacesSchema = v.union([
+  v.literal("アトリウム棟2階のニケ像周辺"),
+  v.literal("サークルプラザ"),
+  v.literal("ももさだ前"),
+  v.literal("開催場所は配布しているカードを参考にしてね！"),
+  v.literal("多目的ホール"),
+  v.literal("レストハウス前"),
+  v.literal("体育館"),
+]);
+
 const eventsSchema = v.object({
   ...microCmsListItemSchema.entries,
   organization: v.string(),
   name: v.string(),
-  place: v.union([
-    v.literal("体育館"),
-    v.literal("テニスコート"),
-    v.literal("屋外ステージ図書館横"),
-    v.literal("屋外ステージ　サークルプラザ"),
-    v.literal("地域交流棟　多目的ホール"),
-    v.literal("all_day")
-  ]),
+  place: eventsPlacesSchema,
   description: v.string(),
   days: v.pipe(
     v.array(v.union([v.literal("1"), v.literal("2")])),
     v.transform((days) => days.map((day) => Number(day))),
   ),
-  timing_start: v.pipe(v.number(), v.minValue(0), v.maxValue(14)),
-  timing_end: v.pipe(v.number(), v.minValue(0), v.maxValue(14)),
+  timing_start: v.pipe(v.number(), v.minValue(8), v.maxValue(20.5)),
+  timing_end: v.pipe(v.number(), v.minValue(8), v.maxValue(20.5)),
 });
 const exhibitionsSchema = v.object({
   ...microCmsListItemSchema.entries,
