@@ -39,7 +39,6 @@ const validators: {
 } = {
   shop_indexes: (data) => runValidation(endPointData.shop_indexes, data),
   events: (data) => runValidation(endPointData.events, data),
-  exhibitions: (data) => runValidation(endPointData.exhibitions, data),
   shops: (data) => runValidation(endPointData.shops, data),
   constants: (data) => runValidation(endPointData.constants, data),
 };
