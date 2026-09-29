@@ -1,5 +1,5 @@
 import { ShopData } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { WhiteTextBox } from "../WhiteTextBox";
 export type ViewType = "card" | "list";
 export default function ShopItem({
@@ -32,12 +32,18 @@ function ListView({ shop, className }: { shop: ShopData; className?: string }) {
       )}
     >
       <div
-        className={`absolute -top-5 -left-5 flex h-10 w-40 items-center justify-center rounded-full ${isFoodShop ? "bg-food" : "bg-goods"}`}
+        className={cn(
+          "absolute -top-5 -left-5 flex h-10 w-40 items-center justify-center rounded-full",
+          isFoodShop ? "bg-food" : "bg-goods",
+        )}
       >
         <p> {isFoodShop ? "飲食" : "物販"}</p>
       </div>
       <div
-        className={`h-80 w-80 shrink-0 overflow-hidden rounded-3xl border-4 bg-amber-300 ${isFoodShop ? "border-food" : "border-goods"}`}
+        className={cn(
+          "h-80 w-80 shrink-0 overflow-hidden rounded-3xl border-4 bg-amber-300",
+          isFoodShop ? "border-food" : "border-goods",
+        )}
       >
         <img
           width={shop.icon_img.width}
@@ -68,7 +74,10 @@ function CardView({ shop, className }: { shop: ShopData; className?: string }) {
       className="relative col-span-1 transition-all duration-300 ease-in-out hover:scale-105"
     >
       <div
-        className={`font-zen absolute -top-5 -right-5 flex h-10 w-40 items-center justify-center rounded-full font-semibold ${isFoodShop ? "bg-food" : "bg-goods"}`}
+        className={cn(
+          "font-zen absolute -top-5 -right-5 flex h-10 w-40 items-center justify-center rounded-full font-semibold",
+          isFoodShop ? "bg-food" : "bg-goods",
+        )}
       >
         <p> {isFoodShop ? "飲食" : "物販"}</p>
       </div>
