@@ -1,4 +1,5 @@
 import IrohaMaps from "@/components/Shops/IrohaMaps";
+import { WhiteTextBox } from "@/components/WhiteTextBox";
 import getMicroCmsData from "@/lib/microcms";
 import { ShopData, ShopIndexData } from "@/lib/types";
 import { notFound } from "next/navigation";
@@ -151,9 +152,9 @@ function ShopSection({
         <img className="w-16 -rotate-6 sm:w-20" src={image} alt="" />
         <h2 className="text-5xl font-bold sm:text-6xl">{title}</h2>
       </div>
-      <div className="mt-8 w-full rounded-[3rem] bg-white/60 px-6 py-8 sm:px-12 sm:py-10">
+      <WhiteTextBox className="mt-8 w-full px-6 py-8 sm:px-12 sm:py-10">
         {children}
-      </div>
+      </WhiteTextBox>
     </section>
   );
 }

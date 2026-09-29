@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { WhiteTextBox } from "@/components/WhiteTextBox";
 
 export default function Greeting({ message: greeting }: { message: string }) {
   return (
@@ -28,7 +29,6 @@ export default function Greeting({ message: greeting }: { message: string }) {
       </motion.div>
 
       <motion.div
-        className="font-zen text-black-soft rounded-[3rem] bg-white/60 p-4 pr-4 pl-8 text-[1.2rem] leading-15 font-bold whitespace-pre-wrap"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -38,7 +38,9 @@ export default function Greeting({ message: greeting }: { message: string }) {
           ease: "easeOut",
         }}
       >
-        <p>{greeting}</p>
+        <WhiteTextBox className="text-black-soft p-4 pr-4 pl-8 whitespace-pre-wrap">
+          <p>{greeting}</p>
+        </WhiteTextBox>
       </motion.div>
     </div>
   );
