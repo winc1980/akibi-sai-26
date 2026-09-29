@@ -21,7 +21,7 @@ export default function Header() {
           <Menu toggle={toggleMenuVisibility} />
         )}
       </div>
-      <div className="fixed top-0 hidden h-23 w-screen flex-row items-center justify-center gap-14 text-2xl md:flex">
+      <div className="fixed top-0 z-50 hidden h-23 w-screen flex-row items-center justify-center gap-14 text-2xl md:flex">
         <Link
           onClick={toggleMenuVisibility}
           href="/"
