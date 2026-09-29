@@ -21,13 +21,12 @@ export default function ShopItem({
 }
 
 function ListView({ shop, className }: { shop: ShopData; className?: string }) {
-  // 展示に移行する可能性あり
   const isFoodShop = shop.category === "food";
   return (
     <a
       href={`/shops/${shop.id}`}
       className={cn(
-        "relative w-full max-w-dvw items-center justify-start gap-4 border-t-2 px-20 pt-12 pb-20",
+        "relative flex w-full max-w-dvw items-center justify-start gap-4 border-t-2 px-20 pt-12 pb-20",
         isFoodShop ? "border-t-food" : "border-t-goods",
         className,
       )}
@@ -54,7 +53,7 @@ function ListView({ shop, className }: { shop: ShopData; className?: string }) {
           alt={shop.shop_name}
         />
       </div>
-      <WhiteTextBox className="px-5 py-6">
+      <WhiteTextBox className="w-full px-5 py-6">
         <p className="font-yuji text-start text-4xl font-bold">
           {shop.shop_name}
         </p>

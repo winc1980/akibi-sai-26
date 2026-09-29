@@ -32,7 +32,7 @@ export default function CardContainer({ shops }: { shops: ShopData[] }) {
           "mt-20",
           viewType === "card"
             ? "grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
-            : "mx-20 flex flex-col",
+            : "mx-20 flex w-full flex-col",
         )}
       >
         {category.includes("food") &&

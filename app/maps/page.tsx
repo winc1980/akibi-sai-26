@@ -19,7 +19,7 @@ export default async function Page() {
         />
       </SectionContainer>
       <SectionContainer label="アクセス">
-        <WhiteTextBox className="xs:max-w-[95dvw] w-4xl max-w-dvw rounded-2xl px-8 py-3.5">
+        <WhiteTextBox className="xs:max-w-[95dvw] w-4xl max-w-dvw">
           <AccessInfo />
         </WhiteTextBox>
       </SectionContainer>

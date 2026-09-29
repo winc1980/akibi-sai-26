@@ -4,10 +4,11 @@ import { Access, GoogleMap } from "./MapCards";
 
 export default function Maps() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center gap-80 overflow-x-clip pt-80 pb-20 sm:gap-100 sm:pt-100 md:flex-row md:gap-2 md:px-2 lg:gap-7">
+    <div className="bg-secondary relative flex w-full flex-col items-center justify-center gap-80 overflow-x-clip pt-80 pb-20 sm:gap-100 sm:pt-100 md:flex-row md:gap-2 md:px-2 lg:gap-7">
       <PodShapedCardContainer label="アクセス">
         <Access />
       </PodShapedCardContainer>
+
       <PodShapedCardContainer label="マップ">
         <GoogleMap />
       </PodShapedCardContainer>
@@ -23,15 +24,16 @@ function PodShapedCardContainer({
   label: string;
 }) {
   return (
-    <div className="xs:w-[80%] w-[90%] pt-25 sm:w-[85%] md:w-[95%] md:max-w-md lg:w-full lg:max-w-xl">
+    <div className="xs:w-[80%] w-[90%] pt-50 sm:w-[85%] md:w-[95%] md:max-w-md lg:w-full lg:max-w-xl">
       <motion.div
-        className="card-container bg-pod border-t-lid relative z-auto mx-auto flex max-h-48 w-full max-w-xl items-center justify-center rounded-b-[5rem] border-t-4 text-center"
+        className="card-container border-t-lid relative isolate z-0 mx-auto flex max-h-48 w-full max-w-xl items-center justify-center rounded-b-[5rem] border-t-4 text-center"
         initial="offscreen"
         whileInView="onscreen"
         viewport={{ amount: 1 }}
       >
+        {/* 動くコンテンツ */}
         <motion.div
-          className="-z-10 flex h-107.5 w-full flex-col items-center justify-center gap-4"
+          className="relative z-10 flex h-107.5 w-full flex-col items-center justify-center gap-4"
           style={{
             transformOrigin: "10% 60%",
           }}
@@ -49,35 +51,52 @@ function PodShapedCardContainer({
             },
           }}
         >
+          {/* フタ */}
           <motion.div
             variants={{
-              offscreen: { rotate: 0 },
+              offscreen: {
+                rotate: 0,
+              },
               onscreen: {
                 rotate: -7,
                 y: "clamp(-35px, -4vw, -25px)",
-                transition: { type: "spring", bounce: 0.4, duration: 0.8 },
+                transition: {
+                  type: "spring",
+                  bounce: 0.4,
+                  duration: 0.8,
+                },
               },
             }}
-            className="flex w-full flex-col items-center"
+            className="relative z-10 flex w-full flex-col items-center"
           >
-            <div className="h-6 w-16 rounded-t-2xl bg-black">
-              {/* ふたの持ち手 */}
-            </div>
-            <div className="bg-pod border-b-lid h-6 w-full rounded-t-2xl border-b-4">
-              {/* ふた */}
-            </div>
+            {/* ふたの持ち手 */}
+            <div className="h-6 w-16 rounded-t-2xl bg-black" />
+
+            {/* ふた */}
+            <div className="bg-pod border-b-lid h-6 w-full rounded-t-2xl border-b-4" />
           </motion.div>
+
+          {/* children */}
           <motion.div
-            className="h-107.5 w-full"
+            className="relative z-10 h-107.5 w-full md:px-2"
             variants={{
-              offscreen: { opacity: 0 },
-              onscreen: { opacity: 1 },
+              offscreen: {
+                opacity: 0,
+              },
+              onscreen: {
+                opacity: 1,
+              },
             }}
           >
             {children}
           </motion.div>
         </motion.div>
-        <div className="font-yuji text-black-soft pointer-events-none absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-[2.5rem] font-normal sm:text-5xl">
+
+        {/* 背景 */}
+        <div className="bg-pod pointer-events-none absolute inset-0 z-20 rounded-b-[5rem]" />
+
+        {/* ラベル */}
+        <div className="font-yuji text-black-soft pointer-events-none absolute top-1/2 left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 text-[2.5rem] font-normal sm:text-5xl">
           {label}
         </div>
       </motion.div>

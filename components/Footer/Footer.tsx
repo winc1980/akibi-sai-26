@@ -4,7 +4,7 @@ import Winc from "./Winc";
 export default function Footer() {
   return (
     <>
-      <footer className="bg-secondary text-akibi-black font-zen flex w-full flex-col items-center pt-8 font-bold">
+      <footer className="bg-tertiary text-akibi-black font-zen flex w-full flex-col items-center pt-8 font-bold">
         <div className="flex w-[90vw] flex-col items-center justify-center gap-12 md:flex-row md:justify-center">
           <img className="max-w-30" src="/akibi_logo.svg" alt="あきび祭ロゴ" />
           <div className="flex flex-col gap-6 md:flex-row">

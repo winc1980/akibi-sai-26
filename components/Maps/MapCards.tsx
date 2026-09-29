@@ -17,12 +17,11 @@ export function GoogleMap() {
 export function Access() {
   return (
     <div className="w-full max-w-150">
-      <WhiteTextBox className="text-black-soft flex max-w-150 items-center justify-center gap-16 rounded-[20px] py-2 pl-8 leading-normal font-semibold shadow-xl">
+      <WhiteTextBox className="text-black-soft flex w-full max-w-150 items-center justify-center gap-16 rounded-[20px] py-2 pl-8 leading-normal font-semibold shadow-xl">
         <div className="flex w-full flex-col items-start justify-center text-start">
           <h2 className="pt-4 pb-4 text-center text-[1.5rem]">
             秋田公立美術大学
           </h2>
-
           <div className="xs:text-[1rem] w-full text-[0.8rem] break-all sm:text-lg">
             <AccessInfo />
           </div>
