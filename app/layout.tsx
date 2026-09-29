@@ -42,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <meta name="apple-mobile-web-app-title" content="あきび祭2026" />
       </head>
-      <body className="flex min-h-full w-full flex-col">
+      <body className="flex min-h-full w-full flex-col text-akibi-black font-zen font-semibold">
         <BackGround />
         <Header />
         {children}
