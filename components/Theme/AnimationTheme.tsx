@@ -7,7 +7,7 @@ export default function AnimationTheme() {
       initial="offscreen"
       whileInView="onscreen"
       viewport={{ amount: 0.5 }}
-      className="relative grid w-[90vw] place-items-center text-center lg:w-[50vw]"
+      className="relative z-20 grid w-[90vw] place-items-center overflow-x-clip text-center lg:w-[50vw]"
     >
       <img
         className="h-auto w-full [grid-area:1/1]"

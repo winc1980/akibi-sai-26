@@ -25,7 +25,7 @@ export default async function Page() {
       </SectionContainer>
       <SectionContainer label="学内マップ">
         <img
-          className="xs:max-w-[95dvw] w-4xl max-w-dvw"
+          className="xs:max-w-[95dvw] w-4xl max-w-dvw rounded-2xl"
           src={data.map_img[0].url}
           alt="構内マップ"
         />

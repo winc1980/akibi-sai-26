@@ -6,7 +6,7 @@ function WhiteTextBox({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="white-text-box"
       className={cn(
-        "font-zen rounded-[3rem] bg-white/60 text-[1.2rem] leading-15 font-bold",
+        "font-zen rounded-[3rem] bg-white/60 px-6 py-12 text-[1.2rem] leading-loose font-bold",
         className,
       )}
       {...props}
