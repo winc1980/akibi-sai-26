@@ -43,8 +43,8 @@ const eventsSchema = v.object({
     v.array(v.union([v.literal("1"), v.literal("2")])),
     v.transform((days) => days.map((day) => Number(day))),
   ),
-  timing_start: v.pipe(v.number(), v.minValue(0), v.maxValue(14)),
-  timing_end: v.pipe(v.number(), v.minValue(0), v.maxValue(14)),
+  timing_start: v.pipe(v.number(), v.minValue(8), v.maxValue(20)),
+  timing_end: v.pipe(v.number(), v.minValue(8), v.maxValue(20)),
 });
 const shopIndexesSchema = v.object({
   ...microCmsListItemSchema.entries,
