@@ -5,7 +5,7 @@ export default function Winc() {
     <div className="bg-tertiary w-full pt-4">
       <section className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-8 px-3 py-6 md:flex-row md:items-start md:text-end">
         <img
-          src="/Footer/winc_logo.svg"
+          src="/footer/winc_logo.svg"
           alt="Logo"
           width={160}
           height={64}
