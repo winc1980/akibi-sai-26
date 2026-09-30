@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "types": ["node"],
     "plugins": [
       {
         "name": "next"
@@ -30,6 +31,6 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "scripts/tsconfig.json"
-  ],
-  "exclude": ["node_modules", "scripts"]
+, "scripts/export/tsconfig.json"  ],
+  "exclude": ["node_modules"]
 }

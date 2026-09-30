@@ -1,13 +1,14 @@
 import getMicroCmsData from "../lib/microcms";
 import { hash, write } from "bun";
-import { dirname, join, resolve } from "node:path";
+import { join } from "node:path";
 import convert from "heic-convert";
 
 import sharp from "sharp";
 import { rm } from "node:fs/promises";
 
-const publicDir = resolve(dirname(import.meta.dir), "public");
-const webpAssetsDir = resolve(publicDir, "webp");
+const publicDir = "../public";
+const webpAssetsDir = `${publicDir}/webp`;
+const registryFileName = "registry.json";
 
 // [ `url`, `webp file name` ]
 const imageRegistry: [string, string][] = [];
@@ -43,13 +44,13 @@ async function main() {
       buf = Buffer.from(png);
     }
 
-    const webp = sharp(buf).rotate().webp({ quality: 80 });
+    const webp = sharp(buf).rotate().webp({ quality: 95 });
     imageRegistry.push([url, name]);
     await write(join(webpAssetsDir, name), await webp.toBuffer());
   }
 
   await write(
-    join(webpAssetsDir, "registry.jsonc"),
+    join(webpAssetsDir, registryFileName),
     JSON.stringify(imageRegistry, null, 2),
   );
 
