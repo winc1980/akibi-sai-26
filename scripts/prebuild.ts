@@ -6,7 +6,7 @@ import convert from "heic-convert";
 import sharp from "sharp";
 import { rm } from "node:fs/promises";
 
-const publicDir = "../public";
+const publicDir = "./public";
 const webpAssetsDir = `${publicDir}/webp`;
 const registryFileName = "registry.json";
 
