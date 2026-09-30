@@ -1,6 +1,7 @@
-import getMicroCmsData from "@/lib/microcms";
-
 export default async function Page() {
-  const data = await getMicroCmsData("events");
-  return <div>page</div>;
+  return (
+    <div className="flex h-dvh items-center justify-center text-4xl">
+      まだできていません。
+    </div>
+  );
 }
