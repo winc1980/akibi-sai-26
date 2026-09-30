@@ -1,6 +1,5 @@
 import { MapPinIcon, ClockIcon, XIcon } from "lucide-react";
 import { EventData } from "@/lib/types";
-import { useState } from "react";
 
 type Toggle = () => void;
 
@@ -21,7 +20,7 @@ export default function EventDetail({
 
   return (
     <div className="relative">
-      <div className="font-zen-kaku absolute z-30 flex h-dvh w-full items-center justify-center bg-gray-500/50 p-20">
+      <div className="font-zen-kaku absolute z-40 flex h-dvh w-full items-center justify-center bg-gray-500/50 p-20">
         <div className="text-akibi-black z-50 flex h-100 w-150 flex-col gap-10 rounded-4xl bg-amber-50 p-7 px-12">
           {/* イベント名と閉じるアイコンのrow */}
           <div className="flex h-10 w-full flex-row justify-between">

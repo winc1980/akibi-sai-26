@@ -152,17 +152,18 @@ export default function Schedule({
           </div>
         </div>
       </div>
-      <div className="flex h-40 w-full flex-col gap-5 pt-10 text-2xl">
-        <div className="font-bold"> 終日イベント</div>
+      <div className="flex h-40 w-full flex-col gap-6 text-2xl">
+        <div className="font-bold"> 終日開催イベント</div>
 
         {allDayEvents.map((event, i) => {
           return (
-            <div
+            <button
               key={i}
-              className="flex h-30 w-full items-center justify-center rounded-2xl bg-amber-400"
+              onClick={() => forOnClick(event)}
+              className="flex h-17 w-full items-center justify-center rounded-2xl bg-amber-400"
             >
               {event.name}
-            </div>
+            </button>
           );
         })}
       </div>
