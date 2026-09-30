@@ -4,7 +4,7 @@ export function MainVisual() {
       <div className="flex w-full flex-col items-center justify-center gap-12 md:flex-row-reverse md:gap-6">
         <img
           className="max-h-[80vh] w-full rounded-full object-contain md:w-3/5 md:rounded-2xl"
-          src="/akibi_main_visual.png"
+          src="/akibi_main_visual.webp"
           alt="あきび祭メインビジュアル"
         />
 

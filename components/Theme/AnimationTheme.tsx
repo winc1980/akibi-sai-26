@@ -11,7 +11,7 @@ export default function AnimationTheme() {
     >
       <img
         className="h-auto w-full [grid-area:1/1]"
-        src="/mainTheme/pot.png"
+        src="/mainTheme/pot.webp"
         alt="メインテーマ"
       />
       <motion.div
@@ -46,7 +46,7 @@ export default function AnimationTheme() {
           left: "0%",
           width: "30%",
         }}
-        src="/mainTheme/tofu.png"
+        src="/mainTheme/tofu.webp"
         alt="豆腐"
       />
       <AnimationImage
@@ -61,7 +61,7 @@ export default function AnimationTheme() {
           width: "30%",
         }}
 
-        src="/mainTheme/shiitake.png"
+        src="/mainTheme/shiitake.webp"
         alt="しいたけ"
       />
       <AnimationImage
@@ -76,7 +76,7 @@ export default function AnimationTheme() {
           left: "0%",
           width: "40%",
         }}
-        src="/mainTheme/kamaboko.png"
+        src="/mainTheme/kamaboko.webp"
         alt="かまぼこ"
       />
       <AnimationImage
@@ -91,7 +91,7 @@ export default function AnimationTheme() {
           left: "50%",
           width: "70%",
         }}
-        src="/mainTheme/takosan.png"
+        src="/mainTheme/takosan.webp"
         alt="たこさん"
       />
       <AnimationImage
@@ -106,7 +106,7 @@ export default function AnimationTheme() {
           left: "30%",
           width: "40%",
         }}
-        src="/mainTheme/carrot.png"
+        src="/mainTheme/carrot.webp"
         alt="にんじん"
       />
     </motion.div>

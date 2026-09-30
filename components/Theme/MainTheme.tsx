@@ -15,7 +15,7 @@ export default function MainTheme({ theme }: { theme: string }) {
               top: "-20%",
               width: "10%",
             }}
-            src="/mainTheme/single-carrot-a.png"
+            src="/mainTheme/single-carrot-a.webp"
             alt="人参"
             className="absolute"
           />
@@ -25,7 +25,7 @@ export default function MainTheme({ theme }: { theme: string }) {
               left: "20%",
               width: "8%",
             }}
-            src="/mainTheme/hakusai.png"
+            src="/mainTheme/hakusai.webp"
             alt="白菜"
             className="absolute"
           />
@@ -35,7 +35,7 @@ export default function MainTheme({ theme }: { theme: string }) {
               left: "30%",
               width: "8%",
             }}
-            src="/mainTheme/single-shiitake-a.png"
+            src="/mainTheme/single-shiitake-a.webp"
             alt="しいたけ"
             className="absolute"
           />
@@ -45,7 +45,7 @@ export default function MainTheme({ theme }: { theme: string }) {
               left: "40%",
               width: "6%",
             }}
-            src="/mainTheme/single-kamaboko-a.png"
+            src="/mainTheme/single-kamaboko-a.webp"
             alt="かまぼこ"
             className="absolute"
           />
@@ -55,7 +55,7 @@ export default function MainTheme({ theme }: { theme: string }) {
               left: "50%",
               width: "10%",
             }}
-            src="/mainTheme/single-carrot-b.png"
+            src="/mainTheme/single-carrot-b.webp"
             alt="人参"
             className="absolute"
           />
@@ -65,7 +65,7 @@ export default function MainTheme({ theme }: { theme: string }) {
               left: "70%",
               width: "10vw",
             }}
-            src="/mainTheme/single-tofu-a.png"
+            src="/mainTheme/single-tofu-a.webp"
             alt="豆腐"
             className="absolute"
           />
@@ -75,7 +75,7 @@ export default function MainTheme({ theme }: { theme: string }) {
               left: "90%",
               width: "10%",
             }}
-            src="/mainTheme/single-shiitake-b.png"
+            src="/mainTheme/single-shiitake-b.webp"
             alt="しいたけ"
             className="absolute"
           />
