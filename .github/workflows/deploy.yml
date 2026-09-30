@@ -20,6 +20,9 @@ jobs:
       
       - name: Build
         run: bun run build
+        env:
+          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
       
       - name: Deploy
         run: bun run deploy
