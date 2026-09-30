@@ -51,22 +51,22 @@ export default function EventDetail({
             <div className="flex flex-row">
               <ClockIcon />
               <div className="w-full">
-                {events.days.includes(1) ? (
+                {events.days.includes(1) && events.days.includes(2) ? (
+                  <div>
+                    一日目：{formatTime(events.timing_start)}～
+                    {formatTime(events.timing_end)}/ 二日目：
+                    {formatTime(events.timing_start)}～
+                    {formatTime(events.timing_end)}
+                  </div>
+                ) : events.days.includes(1) ? (
                   <div>
                     一日目：
                     {formatTime(events.timing_start)}～
                     {formatTime(events.timing_end)}
                   </div>
-                ) : events.days.includes(2) ? (
-                  <div>
-                    二日目：
-                    {formatTime(events.timing_start)}～
-                    {formatTime(events.timing_end)}
-                  </div>
                 ) : (
                   <div>
-                    一日目：{formatTime(events.timing_start)}
-                    {formatTime(events.timing_end)}/ 二日目：
+                    二日目：
                     {formatTime(events.timing_start)}～
                     {formatTime(events.timing_end)}
                   </div>
