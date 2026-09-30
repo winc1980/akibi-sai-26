@@ -1,7 +1,13 @@
-export default async function Page() {
+import getMicroCmsData from "@/lib/microcms";
+
+import EventManager from "@/components/events/EventManager";
+
+export default async function App() {
+  const data = await getMicroCmsData("events");
+
   return (
-    <div className="flex h-dvh items-center justify-center text-4xl">
-      まだできていません。
+    <div>
+      <EventManager initialData={data} />
     </div>
   );
 }
