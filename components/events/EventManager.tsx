@@ -12,6 +12,12 @@ export default function EventManager({
 }) {
   const [showDetailPage, setShowDetailPage] = useState(false);
   const [showDayEvents, setShowDayEvents] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
+  const handleSelect = (id: string) => {
+    setSelectedId(id);
+  };
+
+  const selected = initialData.find((p) => p.id === selectedId);
   function toggleDetailPageVisibility() {
     if (showDetailPage) {
       setShowDetailPage(false);
@@ -30,14 +36,15 @@ export default function EventManager({
   return (
     <div>
       <div>
-        {showDetailPage ? (
+        {showDetailPage && selected ? (
           <EventDetail
             detailToggle={toggleDetailPageVisibility}
-            events={initialData}
+            events={selected}
           />
         ) : undefined}
       </div>
       <Schedule
+        onSelect={handleSelect}
         events={initialData}
         detailToggle={toggleDetailPageVisibility}
         dayToggle={toggleDayEvent}

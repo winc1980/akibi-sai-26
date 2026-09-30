@@ -1,7 +1,9 @@
 import { MapPinIcon, ClockIcon, XIcon } from "lucide-react";
 import { EventData } from "@/lib/types";
+import { useState } from "react";
 
 type Toggle = () => void;
+
 export default function EventDetail({
   detailToggle,
   events,
@@ -18,18 +20,28 @@ export default function EventDetail({
   }
 
   return (
-    <div className="font-zen-kaku flex h-dvh w-full items-center justify-center bg-gray-500/50 p-20">
-      <div className="flex h-100 w-100 flex-col gap-6 rounded-4xl bg-amber-50 p-7 pl-12">
-        <div>
-          {/* イベント名と閉じるアイコンｍのrow */}
+    <div className="relative">
+      <div className="font-zen-kaku absolute z-30 flex h-dvh w-full items-center justify-center bg-gray-500/50 p-20">
+        <div className="text-akibi-black z-50 flex h-100 w-150 flex-col gap-10 rounded-4xl bg-amber-50 p-7 px-12">
+          {/* イベント名と閉じるアイコンのrow */}
           <div className="flex h-10 w-full flex-row justify-between">
-            <div className="w-100 text-3xl leading-16">{events.name}</div>
+            <div
+              className="w-100 text-3xl leading-16"
+              style={{ fontSize: events.name.length > 19 ? "21px" : "30px" }}
+            >
+              {events.name}
+            </div>
             <button type="button" onClick={detailToggle}>
               <XIcon className="h-8 w-8" />
             </button>
           </div>
           {/* 団体 */}
-          <div className="w-full text-2xl">{events.organization}</div>
+          <div
+            className="w-full text-2xl"
+            style={{ fontSize: events.name.length > 19 ? "18px" : "24px" }}
+          >
+            {events.organization}
+          </div>
           <div className="flex flex-col gap-6">
             {/* 場所 */}
             <div className="flex flex-row">
@@ -62,7 +74,9 @@ export default function EventDetail({
                 )}
               </div>
             </div>
-            {/* 時間終わり */}
+
+            {/*詳細 */}
+            <div className="text-1xl">{events.description}</div>
           </div>
         </div>
       </div>

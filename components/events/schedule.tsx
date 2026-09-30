@@ -1,31 +1,23 @@
 import { EventData } from "@/lib/types";
-import { useEffect } from "react";
 
 type Toggle = () => void;
+type OnSelect = (id: string) => void;
 export default function Schedule({
   events,
   detailToggle,
   dayToggle,
   showDay,
+  onSelect,
 }: {
   events: EventData[];
   detailToggle: Toggle;
   dayToggle: Toggle;
   showDay: boolean;
+  onSelect: OnSelect;
 }) {
   const TIME_START = 9.5;
-  const TIME_END = 20.5;
+  const TIME_END = 20;
   const CELL_HEIGHT = 36;
-
-  //   useEffect(() => {
-  //     const data = events.map((event) => {
-  //       return {
-  //         name: event.name,
-  //         number: (event.timing_start - TIME_START) * 2,
-  //       };
-  //     });
-  //     console.log(data);
-  //   }, [events]);
 
   function placeRowsNumber(scheduledEvents: EventData): number {
     return placeLabel.findIndex((items) => items == scheduledEvents.place);
@@ -52,6 +44,11 @@ export default function Schedule({
   const placeLabel = scheduledEventPlaces.filter(
     (event) => event != "開催場所は配布しているカードを参考にしてね！",
   );
+
+  const forOnClick = (event: EventData) => {
+    detailToggle();
+    onSelect(event.id);
+  };
 
   return (
     <div className="font-zen-kaku h-full w-full flex-row p-20 font-semibold">
@@ -139,7 +136,7 @@ export default function Schedule({
               return (
                 <button
                   type="button"
-                  onClick={detailToggle}
+                  onClick={() => forOnClick(event)}
                   key={i}
                   className="z-10 my-0.5 flex items-center justify-center rounded-md bg-amber-700 p-2 text-xs text-wrap text-amber-50"
                   style={{
