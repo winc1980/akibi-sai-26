@@ -13,7 +13,8 @@ export function CachedImage({
   const registry = useCachedImageRegistry();
   const cachedUrl = registry[src];
   if (!cachedUrl) {
-    throw new Error(`キャッシュされた画像ファイルが見つかりません：${src}`);
+    return <img {...rest} alt={alt} src={src} />;
+    // throw new Error(`キャッシュされた画像ファイルが見つかりません：${src}`);
   }
   return <img {...rest} alt={alt} src={`/webp/${cachedUrl}`} />;
 }
