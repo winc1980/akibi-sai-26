@@ -1,43 +1,63 @@
+"use client";
+import { useState } from "react";
+import { Menu, MenuBar } from "./Menu";
 import Link from "next/link";
 
 export default function Header() {
+  const [showMenu, setShowMenu] = useState(true);
+  function toggleMenuVisibility() {
+    if (showMenu) {
+      setShowMenu(false);
+    } else {
+      setShowMenu(true);
+    }
+  }
   return (
-    <header className="font-zen-kaku fixed top-0 left-0 z-50 flex w-dvw justify-start pl-8 text-[1.3rem] font-bold">
-      <AnimationLink _src="/たこさん.png" href="/">
-        トップ
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/maps">
-        マップ
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/events">
-        イベントスケジュール
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/shops">
-        模擬店
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/exhibitions">
-        展示
-      </AnimationLink>
-      <AnimationLink _src="/たこさん.png" href="/sponsors">
-        協賛
-      </AnimationLink>
-    </header>
-  );
-}
-function AnimationLink({
-  children,
-  href,
-  _src,
-}: {
-  children: string;
-  href: string;
-  _src: string;
-}) {
-  //   const [isClicked, setIsClicked] = useState(false);
-
-  return (
-    <div className="text-default_black relative mr-5 flex h-16 items-center justify-center">
-      <Link href={href}>{children}</Link>
+    <div className="font-zen font-bold">
+      <div className="md:hidden">
+        {showMenu ? (
+          <MenuBar toggle={toggleMenuVisibility} />
+        ) : (
+          <Menu toggle={toggleMenuVisibility} />
+        )}
+      </div>
+      <div className="fixed top-0 hidden h-23 w-screen flex-row items-center justify-center gap-14 text-2xl md:flex">
+        <Link
+          onClick={toggleMenuVisibility}
+          href="/"
+          className="font-bold hover:underline"
+        >
+          トップ
+        </Link>
+        <Link
+          onClick={toggleMenuVisibility}
+          href="/exhibitions"
+          className="hover:underline"
+        >
+          展示
+        </Link>
+        <Link
+          onClick={toggleMenuVisibility}
+          href="/shops"
+          className="hover:underline"
+        >
+          模擬店
+        </Link>
+        <Link
+          onClick={toggleMenuVisibility}
+          href="/events"
+          className="hover:underline"
+        >
+          イベントスケジュール
+        </Link>
+        <Link
+          onClick={toggleMenuVisibility}
+          href="/maps"
+          className="hover:underline"
+        >
+          マップ
+        </Link>
+      </div>
     </div>
   );
 }

@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:wrangler": "wrangler pages dev out",
+    "dev:wrangler": "wrangler dev",
     "build": "next build",
-    "deploy": "wrangler pages deploy out --project-name=akibi-sai-2026",
+    "deploy": "wrangler deploy",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
