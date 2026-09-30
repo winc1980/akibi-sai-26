@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "dev:wrangler": "wrangler dev",
-    "build": "next build",
+    "build": "bunx next build",
     "prebuild": "bun run scripts/prebuild.ts",
-    "deploy": "wrangler deploy",
+    "deploy": "bun run build && bunx wrangler deploy",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
