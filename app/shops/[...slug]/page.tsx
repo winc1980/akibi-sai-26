@@ -130,7 +130,7 @@ async function ShopPage({
       </motion.section>
 
       {shop.menu && (
-        <ShopSection title="メニュー" image="/mainTheme/carrot.png">
+        <ShopSection title="メニュー" image="/mainTheme/carrot.webp">
           <div
             className="text-[1.2rem] leading-10 font-bold whitespace-pre-wrap [&_a]:underline [&_li]:ml-6 [&_ol]:list-decimal [&_p]:mb-3 [&_ul]:list-disc"
             dangerouslySetInnerHTML={{ __html: shop.menu }}
@@ -138,13 +138,13 @@ async function ShopPage({
         </ShopSection>
       )}
 
-      <ShopSection title="お店について" image="/mainTheme/hakusai.png">
+      <ShopSection title="お店について" image="/mainTheme/hakusai.webp">
         <p className="text-[1.2rem] leading-10 font-bold whitespace-pre-wrap">
           {shop.long_description}
         </p>
       </ShopSection>
 
-      <ShopSection title="企画場所" image="/mainTheme/tofu.png">
+      <ShopSection title="企画場所" image="/mainTheme/tofu.webp">
         <IrohaMaps iroha={shopIndex.iroha} />
       </ShopSection>
     </div>
