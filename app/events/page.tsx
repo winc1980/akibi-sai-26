@@ -1,6 +1,13 @@
 import getMicroCmsData from "@/lib/microcms";
 
-export default async function Page() {
+import EventManager from "@/components/events/EventManager";
+
+export default async function App() {
   const data = await getMicroCmsData("events");
-  return <div>page</div>;
+
+  return (
+    <div>
+      <EventManager initialData={data} />
+    </div>
+  );
 }

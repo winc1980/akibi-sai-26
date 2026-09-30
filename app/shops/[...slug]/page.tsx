@@ -8,6 +8,7 @@ import { ArrowLeft, Handbag, MapPin } from "lucide-react";
 import * as motion from "motion/react-client";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { CachedImage } from "@/components/image/CachedImage";
 
 // [slug]になりうるすべてのページの値を返すと、すべてに対してhtmlをあらかじめ生成してくれる
 export async function generateStaticParams() {
@@ -40,7 +41,7 @@ export default async function Page({
   return <ShopPage shop={shop} shopIndex={shopIndex} />;
 }
 
-function ShopPage({
+async function ShopPage({
   shop,
   shopIndex,
 }: {
@@ -86,7 +87,7 @@ function ShopPage({
               isFoodShop ? "border-food" : "border-goods",
             )}
           >
-            <img
+            <CachedImage
               className="max-h-104 w-full object-contain p-4"
               src={shop.icon_img.url}
               alt={shop.shop_name}
@@ -129,7 +130,7 @@ function ShopPage({
       </motion.section>
 
       {shop.menu && (
-        <ShopSection title="メニュー" image="/mainTheme/carrot.png">
+        <ShopSection title="メニュー" image="/mainTheme/carrot.webp">
           <div
             className="text-[1.2rem] leading-10 font-bold whitespace-pre-wrap [&_a]:underline [&_li]:ml-6 [&_ol]:list-decimal [&_p]:mb-3 [&_ul]:list-disc"
             dangerouslySetInnerHTML={{ __html: shop.menu }}
@@ -137,13 +138,13 @@ function ShopPage({
         </ShopSection>
       )}
 
-      <ShopSection title="お店について" image="/mainTheme/hakusai.png">
+      <ShopSection title="お店について" image="/mainTheme/hakusai.webp">
         <p className="text-[1.2rem] leading-10 font-bold whitespace-pre-wrap">
           {shop.long_description}
         </p>
       </ShopSection>
 
-      <ShopSection title="企画場所" image="/mainTheme/tofu.png">
+      <ShopSection title="企画場所" image="/mainTheme/tofu.webp">
         <IrohaMaps iroha={shopIndex.iroha} />
       </ShopSection>
     </div>
@@ -162,7 +163,7 @@ function ShopSection({
   return (
     <section className="mt-24 flex w-full max-w-4xl flex-col items-center">
       <div className="font-yuji flex items-center justify-center gap-3">
-        <img className="w-16 -rotate-6 sm:w-20" src={image} alt="" />
+        <CachedImage className="w-16 -rotate-6 sm:w-20" src={image} alt="" />
         <h2 className="text-5xl font-bold sm:text-6xl">{title}</h2>
       </div>
       <WhiteTextBox className="mt-8 w-full px-6 py-8 sm:px-12 sm:py-10">

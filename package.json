@@ -5,14 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "dev:wrangler": "wrangler dev",
-    "build": "next build",
-    "deploy": "wrangler deploy",
+    "build": "bunx next build",
+    "prebuild": "bun run --bun scripts/prebuild.ts",
+    "deploy": "bun run build && bunx wrangler deploy",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
+    "@types/bun": "^1.4.2",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.3.0",
     "lucide-react": "^1.48.0",
@@ -25,14 +27,17 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/heic-convert": "^2.1.1",
+    "@types/node": "^26.6.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "eslint-config-prettier": "^10.1.8",
+    "heic-convert": "^2.1.0",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.135.0"

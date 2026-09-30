@@ -31,7 +31,7 @@ export default function Greeting({ message: greeting }: { message: string }) {
           <div className="font-yuji text-black-soft flex items-center justify-center text-center text-8xl leading-24 font-normal">
             <img
               className="max-w-[20vw]"
-              src="/akibi_goods.png"
+              src="/akibi_goods.webp"
               alt="学祭グッズ"
             />
             <p>ごあいさつ</p>

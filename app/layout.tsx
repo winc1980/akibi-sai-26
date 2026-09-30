@@ -5,6 +5,7 @@ import { cn } from "cn";
 import BackGround from "@/components/BackGround";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer/Footer";
+import ServerLayout from "./server-layout";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -42,10 +43,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <meta name="apple-mobile-web-app-title" content="あきび祭2026" />
       </head>
-      <body className="flex min-h-full w-full flex-col text-akibi-black font-zen font-semibold">
+      <body className="text-akibi-black font-zen flex min-h-full w-full flex-col font-semibold">
         <BackGround />
         <Header />
-        {children}
+        <ServerLayout>{children}</ServerLayout>
         <Footer />
       </body>
     </html>
