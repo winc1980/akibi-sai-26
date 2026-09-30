@@ -2,6 +2,7 @@ import getMicroCmsData from "@/lib/microcms";
 import { AccessInfo } from "@/components/Maps/AccessInfo";
 import { WhiteTextBox } from "@/components/WhiteTextBox";
 import { ReactNode } from "react";
+import { CachedImage } from "@/components/image/CachedImage";
 
 export default async function Page() {
   const data = await getMicroCmsData("constants");
@@ -24,7 +25,7 @@ export default async function Page() {
         </WhiteTextBox>
       </SectionContainer>
       <SectionContainer label="学内マップ">
-        <img
+        <CachedImage
           className="xs:max-w-[95dvw] w-4xl max-w-dvw rounded-2xl"
           src={data.map_img[0].url}
           alt="構内マップ"

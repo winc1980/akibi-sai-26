@@ -2,6 +2,7 @@ import { ShopData } from "@/lib/types";
 import { cn } from "cn";
 import { WhiteTextBox } from "../WhiteTextBox";
 import { MapPin } from "lucide-react";
+import { CachedImage } from "../image/CachedImage";
 export type ViewType = "card" | "list";
 export default function ShopItem({
   shop,
@@ -45,7 +46,7 @@ function ListView({ shop, className }: { shop: ShopData; className?: string }) {
           isFoodShop ? "border-food" : "border-goods",
         )}
       >
-        <img
+        <CachedImage
           width={shop.icon_img.width}
           height={shop.icon_img.height}
           className="h-full w-full object-cover"
@@ -98,7 +99,7 @@ function CardView({ shop, className }: { shop: ShopData; className?: string }) {
       >
         <div className="text-akibi-black mb-4 flex flex-col md:h-full">
           <div className="flex max-h-96 items-center justify-center overflow-hidden">
-            <img
+            <CachedImage
               className="h-full w-full object-cover"
               src={shop.icon_img.url}
               alt={shop.shop_name}
