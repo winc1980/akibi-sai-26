@@ -48,7 +48,7 @@ export default function EventDetail({
               <div className="w-full">{events.place}</div>
             </div>
             {/* 時間 */}
-            <div className="flex flex-row">
+            <div className="flex flex-row gap-1">
               <ClockIcon />
               <div className="w-full">
                 {events.days.includes(1) && events.days.includes(2) ? (

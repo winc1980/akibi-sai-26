@@ -82,7 +82,7 @@ export default function Schedule({
           {placeLabel.map((place, i) => (
             <div
               key={i}
-              className="text-amber-50h-10 flex h-10 items-center justify-center rounded-md bg-blue-500 p-2 text-xs"
+              className="text-amber-50h-10 bg-secondary flex h-10 items-center justify-center rounded-md p-2 text-xs"
             >
               {place}
             </div>
@@ -138,7 +138,7 @@ export default function Schedule({
                   type="button"
                   onClick={() => forOnClick(event)}
                   key={i}
-                  className="z-10 my-0.5 flex items-center justify-center rounded-md bg-amber-700 p-2 text-xs text-wrap text-amber-50"
+                  className="bg-primary z-10 my-0.5 flex items-center justify-center rounded-md p-2 text-xs text-wrap text-amber-50"
                   style={{
                     gridRow: `${(event.timing_start - TIME_START) * 2 + 1} / span ${(event.timing_end - event.timing_start) * 2}`,
 
@@ -160,7 +160,7 @@ export default function Schedule({
             <button
               key={i}
               onClick={() => forOnClick(event)}
-              className="flex h-17 w-full items-center justify-center rounded-2xl bg-amber-400"
+              className="bg-focused flex h-17 w-full items-center justify-center rounded-2xl"
             >
               {event.name}
             </button>
