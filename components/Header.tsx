@@ -21,40 +21,17 @@ export default function Header() {
           <Menu toggle={toggleMenuVisibility} />
         )}
       </div>
-      <div className="fixed top-0 hidden h-23 w-screen flex-row items-center justify-center gap-14 text-2xl md:flex">
-        <Link
-          onClick={toggleMenuVisibility}
-          href="/"
-          className="font-bold hover:underline"
-        >
+      <div className="fixed top-0 z-50 hidden h-23 w-screen flex-row items-center justify-center gap-14 text-2xl md:flex">
+        <Link href="/" className="font-bold hover:underline">
           トップ
         </Link>
-        <Link
-          onClick={toggleMenuVisibility}
-          href="/exhibitions"
-          className="hover:underline"
-        >
-          展示
-        </Link>
-        <Link
-          onClick={toggleMenuVisibility}
-          href="/shops"
-          className="hover:underline"
-        >
+        <Link href="/shops" className="hover:underline">
           模擬店
         </Link>
-        <Link
-          onClick={toggleMenuVisibility}
-          href="/events"
-          className="hover:underline"
-        >
+        <Link href="/events" className="hover:underline">
           イベントスケジュール
         </Link>
-        <Link
-          onClick={toggleMenuVisibility}
-          href="/maps"
-          className="hover:underline"
-        >
+        <Link href="/maps" className="hover:underline">
           マップ
         </Link>
       </div>

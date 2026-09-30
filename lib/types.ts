@@ -9,10 +9,6 @@ export type ShopIndexData = v.InferOutput<
 
 export type EventData = v.InferOutput<typeof endPointData.events>[number];
 
-export type ExhibitionData = v.InferOutput<
-  typeof endPointData.exhibitions
->[number];
-
 export type ConstantsData = v.InferOutput<typeof endPointData.constants>;
 
 export type EventsPlaces = v.InferOutput<typeof eventsPlacesSchema>;

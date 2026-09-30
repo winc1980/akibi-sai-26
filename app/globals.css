@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @theme {
-  --color-primary: rgba(222, 92, 40, 0.8);
+  --color-primary: rgba(222, 92, 40);
   --color-secondary: rgb(165 197 84);
   --color-tertiary: rgb(224 222 172);
   --color-focused: var(--color-amber-400);
@@ -15,7 +15,7 @@
   --color-winc-black: rgb(28, 25, 23);
 
   --font-zen: var(--font-zen-kaku-gothic-new), sans-serif;
-  --font-yuji: var(--font-sans), "HGP行書体", "Yu Mincho", serif;
+  --font-yuji: "HGP行書体", "HG行書体", "HGS行書体", "Yu Mincho", serif;
 
   --breakpoint-xs: 30rem;
 }
