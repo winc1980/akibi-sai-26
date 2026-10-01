@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { WhiteTextBox } from "@/components/WhiteTextBox";
 import { useRef } from "react";
+import DecoratedText from "../DecoratedText";
 
 export default function Greeting({ message: greeting }: { message: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,7 +50,7 @@ export default function Greeting({ message: greeting }: { message: string }) {
           }}
         >
           <WhiteTextBox>
-            <p>{greeting}</p>
+            <DecoratedText text={greeting}></DecoratedText>
           </WhiteTextBox>
         </motion.div>
       </motion.div>
