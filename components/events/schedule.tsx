@@ -53,7 +53,7 @@ export default function Schedule({
   return (
     <div className="font-zen-kaku h-full w-full flex-row p-20 font-semibold">
       {/* １日目、２日目ラベル */}
-      <div className="center h-10 w-full rounded-md bg-amber-300 p-1">
+      <div className="center bg-secondary h-10 w-full rounded-md p-1">
         <div className="flex flex-row items-center justify-center">
           <button
             type="button"
@@ -82,7 +82,7 @@ export default function Schedule({
           {placeLabel.map((place, i) => (
             <div
               key={i}
-              className="text-amber-50h-10 bg-secondary flex h-10 items-center justify-center rounded-md p-2 text-xs"
+              className="text-amber-50h-10 bg-focused flex h-10 items-center justify-center rounded-md p-2 text-xs"
             >
               {place}
             </div>
