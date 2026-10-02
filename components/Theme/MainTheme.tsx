@@ -2,6 +2,7 @@ import { WhiteTextBox } from "@/components/WhiteTextBox";
 import AnimationTheme from "./AnimationTheme";
 import { WavePath } from "../WavePath";
 import MoveBackground from "../MoveBackground";
+import DecoratedText from "../DecoratedText";
 
 export default function MainTheme({ theme }: { theme: string }) {
   return (
@@ -88,7 +89,7 @@ export default function MainTheme({ theme }: { theme: string }) {
         <AnimationTheme />
         <div className="grid w-[90vw] place-items-center lg:w-[50vw]">
           <WhiteTextBox className="[grid-area:1/1] lg:w-[45vw]">
-            <p>{theme}</p>
+            <DecoratedText text={theme}></DecoratedText>
           </WhiteTextBox>
         </div>
         <div className="bg-primary absolute -bottom-10 -z-10 h-10 w-full [clip-path:ellipse(87%_57%_at_50%_41%)] md:h-40"></div>

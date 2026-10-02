@@ -1,4 +1,5 @@
 import { EventData } from "@/lib/types";
+import { Dialog } from "@base-ui/react";
 
 type Toggle = () => void;
 type OnSelect = (id: string) => void;
@@ -134,8 +135,7 @@ export default function Schedule({
           >
             {(showDay ? firstDayEvents : secondDayEvents).map((event, i) => {
               return (
-                <button
-                  type="button"
+                <Dialog.Trigger
                   onClick={() => forOnClick(event)}
                   key={i}
                   className="bg-primary z-10 my-0.5 flex items-center justify-center rounded-md p-2 text-xs text-wrap text-amber-50"
@@ -146,7 +146,7 @@ export default function Schedule({
                   }}
                 >
                   <div className="min-w-0 wrap-break-word">{event.name}</div>
-                </button>
+                </Dialog.Trigger>
               );
             })}
           </div>
