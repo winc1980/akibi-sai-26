@@ -6,10 +6,7 @@ const irohaMap = {
   ニ: "ni",
   ホ: "ho",
   ヘ: "he",
-  ト: "to",
-  チ: "chi",
-  リ: "ri",
-  ヌ: "nu",
+  ト: "to"
 };
 
 export default async function IrohaMaps({
@@ -20,7 +17,7 @@ export default async function IrohaMaps({
   return (
     <img
       className="mx-auto w-full max-w-2xl rounded-2xl"
-      src={`/map/shop_map_${irohaMap[iroha]}.svg`}
+      src={`/map/shop_map_${irohaMap[iroha]}.png`}
       alt="企画場所の校内マップ"
     />
   );

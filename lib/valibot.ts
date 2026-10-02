@@ -8,10 +8,7 @@ const irohaSchema = v.union([
   v.literal("ニ"),
   v.literal("ホ"),
   v.literal("ヘ"),
-  v.literal("ト"),
-  v.literal("チ"),
-  v.literal("リ"),
-  v.literal("ヌ"),
+  v.literal("ト")
 ]);
 const microCmsImageSchema = v.object({
   url: v.pipe(v.string(), v.url()),
