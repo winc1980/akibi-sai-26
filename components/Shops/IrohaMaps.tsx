@@ -17,7 +17,7 @@ export default async function IrohaMaps({
   return (
     <img
       className="mx-auto w-full max-w-2xl rounded-2xl"
-      src={`/map/shop_map_${irohaMap[iroha]}.png`}
+      src={`/map/shop_map_${irohaMap[iroha]}.webp`}
       alt="企画場所の校内マップ"
     />
   );
