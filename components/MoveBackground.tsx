@@ -1,7 +1,6 @@
-"use client";
 import { cn } from "cn";
-import { motion, useScroll, useTransform } from "motion/react";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
+import { ReactNode, useEffect, useRef } from "react";
 export default function MoveBackground({
   className,
   children,
@@ -15,26 +14,23 @@ export default function MoveBackground({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const [height, setHeight] = useState(0);
-
+  const height = useMotionValue(0);
   useEffect(() => {
     const element = childrenRef.current;
     if (!element) return;
 
     const observer = new ResizeObserver(([entry]) => {
-      setHeight(entry.contentRect.height);
+      height.set(entry.contentRect.height);
     });
 
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, []);
+  }, [height]);
 
-  const y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["10dvh", `${-height - 60}px`],
-  );
+  const y = useTransform([scrollYProgress, height], ([p, h]: number[]) => {
+    return `calc(${10 * (1 - p)}dvh + ${p * (-h - 60)}px)`;
+  });
 
   return (
     <div
@@ -48,7 +44,7 @@ export default function MoveBackground({
         ref={childrenRef}
         className="absolute w-dvw"
         style={{
-          top: y,
+          y: y,
         }}
       >
         {children}

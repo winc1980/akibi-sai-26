@@ -1,15 +1,15 @@
 import { WhiteTextBox } from "@/components/WhiteTextBox";
 import AnimationTheme from "./AnimationTheme";
 import { WavePath } from "../WavePath";
-import MoveBackground from "../MoveBackground";
+import ViewPortChecker from "../ViewPortChecker";
 import DecoratedText from "../DecoratedText";
 
 export default function MainTheme({ theme }: { theme: string }) {
   return (
-    <MoveBackground>
+    <ViewPortChecker>
       <div className="relative z-10">
+        <WavePath className="xs:-bottom-11 relative -bottom-10 opacity-50 md:absolute md:-top-5 lg:-top-8" />
         <WavePath className="relative -bottom-1" />
-        <WavePath className="absolute bottom-4 opacity-50" />
         <div>
           <img
             style={{
@@ -94,6 +94,6 @@ export default function MainTheme({ theme }: { theme: string }) {
         </div>
         <div className="bg-primary absolute -bottom-10 -z-10 h-10 w-full [clip-path:ellipse(87%_57%_at_50%_41%)] md:h-40"></div>
       </div>
-    </MoveBackground>
+    </ViewPortChecker>
   );
 }
