@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "cn";
 import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
 import { ReactNode, useEffect, useRef } from "react";
