@@ -25,74 +25,25 @@ export default function AnimationTheme() {
         </p>
         <p className="text-[20cqw] leading-none lg:text-[10cqw]">お鍋</p>
       </motion.div>
-      <div className="@container-size pointer-events-none absolute inset-0">
-        <AnimationImage
-          src="/mainTheme/tofu.webp"
-          alt="豆腐"
-          from={{ top: 40, left: 40, width: 1 }}
-          to={{ top: 20, left: 0, width: 30 }}
-        />
-        <AnimationImage
-          src="/mainTheme/shiitake.webp"
-          alt="しいたけ"
-          from={{ top: 40, left: 50, width: 1 }}
-          to={{ top: -30, left: 70, width: 30 }}
-        />
-        <AnimationImage
-          src="/mainTheme/kamaboko.webp"
-          alt="かまぼこ"
-          from={{ top: 10, left: 30, width: 1 }}
-          to={{ top: -60, left: 0, width: 40 }}
-        />
-        <AnimationImage
-          src="/mainTheme/takosan.webp"
-          alt="たこさん"
-          from={{ top: 50, left: 40, width: 1 }}
-          to={{ top: 0, left: 50, width: 70 }}
-        />
-        <AnimationImage
-          src="/mainTheme/carrot.webp"
-          alt="にんじん"
-          from={{ top: 50, left: 20, width: 1 }}
-          to={{ top: -60, left: 30, width: 40 }}
+      <div className="@container-size pointer-events-none absolute inset-0 flex items-center justify-center">
+        <motion.img
+          variants={{
+            offscreen: {
+              scale: 0,
+            },
+            onscreen: {
+              scale: 1,
+            },
+          }}
+          style={{
+            top: "-30%",
+          }}
+          className="relative"
+          transition={{ type: "spring", duration: 0.8 }}
+          src="/mainTheme/fly.webp"
+          alt=""
         />
       </div>
     </motion.div>
-  );
-}
-
-function AnimationImage({
-  src,
-  alt,
-  from,
-  to,
-}: {
-  src: string;
-  alt: string;
-  from: { top: number; left: number; width: number };
-  to: { top: number; left: number; width: number };
-}) {
-  return (
-    <motion.img
-      variants={{
-        offscreen: {
-          x: `${from.left - to.left}cqw`,
-          y: `${from.top - to.top}cqh`,
-          scale: from.width / to.width,
-        },
-        onscreen: { x: "0cqw", y: "0cqh", scale: 1 },
-      }}
-      transition={{ type: "spring", duration: 0.8 }}
-      style={{
-        top: `${to.top}%`,
-        left: `${to.left}%`,
-        width: `${to.width}%`,
-        originX: 0,
-        originY: 0,
-      }}
-      className="absolute h-auto"
-      src={src}
-      alt={alt}
-    />
   );
 }

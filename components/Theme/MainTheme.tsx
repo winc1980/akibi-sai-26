@@ -1,7 +1,5 @@
 import { WhiteTextBox } from "@/components/WhiteTextBox";
 import AnimationTheme from "./AnimationTheme";
-import { WavePath } from "../WavePath";
-import ViewPortChecker from "../ViewPortChecker";
 import DecoratedText from "../DecoratedText";
 import MoveBackground from "../MoveBackground";
 
