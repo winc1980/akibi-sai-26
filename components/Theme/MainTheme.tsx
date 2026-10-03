@@ -1,11 +1,11 @@
 import { WhiteTextBox } from "@/components/WhiteTextBox";
 import AnimationTheme from "./AnimationTheme";
 import DecoratedText from "../DecoratedText";
-import MoveBackground from "../MoveBackground";
+import ViewPortChecker from "../ViewPortChecker";
 
 export default function MainTheme({ theme }: { theme: string }) {
   return (
-    <MoveBackground>
+    <ViewPortChecker>
       <div className="relative z-10">
         <img
           className="relative -bottom-1 w-full md:hidden"
@@ -30,6 +30,6 @@ export default function MainTheme({ theme }: { theme: string }) {
         </div>
         <div className="bg-primary absolute -bottom-10 -z-10 h-10 w-full [clip-path:ellipse(87%_57%_at_50%_41%)] md:h-40"></div>
       </div>
-    </MoveBackground>
+    </ViewPortChecker>
   );
 }

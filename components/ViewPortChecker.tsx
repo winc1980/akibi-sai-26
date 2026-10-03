@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "cn";
 import { useMotionValue } from "motion/react";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import MoveBackground from "./MoveBackground";
 
 export default function ViewPortChecker({
@@ -11,12 +11,12 @@ export default function ViewPortChecker({
   className?: string;
   children: ReactNode;
 }) {
-  const innerWidth = useMotionValue(0);
+  const [innerWidth, setInnerWidth] = useState(0);
   const Threshold = 768; //mdが48rem=768px
 
   useEffect(() => {
     const handleResize = () => {
-      innerWidth.set(window.innerWidth);
+      setInnerWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -25,7 +25,8 @@ export default function ViewPortChecker({
       window.removeEventListener("resize", handleResize);
     };
   }, [innerWidth]);
-  if (innerWidth.get() < Threshold) {
+  if (innerWidth < Threshold) {
+    console.log("スマホだよ");
     return (
       <div
         style={{
@@ -37,6 +38,7 @@ export default function ViewPortChecker({
       </div>
     );
   } else {
+    console.log("パソコンだよ");
     return <MoveBackground className={className}>{children}</MoveBackground>;
   }
 }
