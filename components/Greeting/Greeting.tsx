@@ -15,6 +15,7 @@ export default function Greeting({ message: greeting }: { message: string }) {
 
   return (
     <div className="relative z-10 h-full w-full overflow-x-clip" ref={ref}>
+      {/*<SlideIngredients />*/}
       <motion.div
         style={{ translateY: y }}
         id="greeting"

@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "cn";
 import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 export default function MoveBackground({
   className,
   children,
@@ -11,34 +11,30 @@ export default function MoveBackground({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const childrenRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const height = useMotionValue(0);
+  const MotionHeight = useMotionValue(0);
   useEffect(() => {
-    const element = childrenRef.current;
-    if (!element) return;
+    if (!childrenRef.current) {
+      return;
+    }
+    MotionHeight.set(childrenRef.current.clientHeight);
+    setHeight(childrenRef.current.clientHeight);
+  }, [MotionHeight]);
 
-    const observer = new ResizeObserver(([entry]) => {
-      height.set(entry.contentRect.height);
-    });
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, [height]);
-
-  const y = useTransform([scrollYProgress, height], ([p, h]: number[]) => {
-    return `calc(${10 * (1 - p)}dvh + ${p * (-h - 60)}px)`;
-  });
+  const y = useTransform(
+    [scrollYProgress, MotionHeight],
+    ([p, h]: number[]) => {
+      return `calc(${10 * (1 - p)}dvh + ${p * -h}px)`;
+    },
+  );
 
   return (
     <div
       ref={ref}
-      style={{
-        marginBottom: "-10vh",
-      }}
       className={cn("relative z-20 h-full w-full overflow-x-clip", className)}
     >
       <motion.div

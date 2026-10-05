@@ -1,6 +1,5 @@
 "use client";
 import { cn } from "cn";
-import { useMotionValue } from "motion/react";
 import { ReactNode, useEffect, useState } from "react";
 import MoveBackground from "./MoveBackground";
 
@@ -11,34 +10,42 @@ export default function ViewPortChecker({
   className?: string;
   children: ReactNode;
 }) {
-  const [innerWidth, setInnerWidth] = useState(0);
+  const [viewPointWidth, setViewPointWidth] = useState(0);
   const Threshold = 768; //mdが48rem=768px
 
   useEffect(() => {
     const handleResize = () => {
-      setInnerWidth(window.innerWidth);
+      setViewPointWidth(window.innerWidth);
     };
-
+    handleResize();
+    window.addEventListener("DOMContentLoaded", handleResize);
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("DOMContentLoaded", handleResize);
     };
-  }, [innerWidth]);
-  if (innerWidth < Threshold) {
-    console.log("スマホだよ");
-    return (
-      <div
-        style={{
-          marginBottom: "-3rem",
-        }}
-        className={cn("relative z-20 h-full w-full overflow-x-clip", className)}
-      >
-        {children}
-      </div>
-    );
-  } else {
-    console.log("パソコンだよ");
-    return <MoveBackground className={className}>{children}</MoveBackground>;
+  }, []);
+
+  if (viewPointWidth === 0) {
+    return null;
   }
+  return (
+    <>
+      {viewPointWidth < Threshold ? (
+        <div
+          style={{
+            marginBottom: "-3rem",
+          }}
+          className={cn(
+            "relative z-20 h-full w-full overflow-x-clip",
+            className,
+          )}
+        >
+          {children}
+        </div>
+      ) : (
+        <MoveBackground className={className}>{children}</MoveBackground>
+      )}
+    </>
+  );
 }

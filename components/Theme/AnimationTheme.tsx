@@ -36,7 +36,7 @@ export default function AnimationTheme() {
             },
           }}
           style={{
-            top: "-30%",
+            top: "-18%",
           }}
           className="relative"
           transition={{ type: "spring", duration: 0.8 }}
