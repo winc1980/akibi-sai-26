@@ -1,6 +1,9 @@
 name: Deploy on microCMS Update
 
 on:
+  push:
+    branches:
+      - main
   repository_dispatch:
     types: [microcms-events-update]
   workflow_dispatch:
