@@ -50,6 +50,8 @@ export default function Schedule({
     onSelect(event.id);
   };
 
+  const dayEvents = showDay ? firstDayEvents : secondDayEvents;
+
   return (
     <div className="font-zen-kaku h-full w-full flex-row p-20 font-semibold">
       {/* １日目、２日目ラベル */}
@@ -132,20 +134,37 @@ export default function Schedule({
               gridTemplate: "repeat(22,36px)/repeat(6,minmax(0,1fr))",
             }}
           >
-            {(showDay ? firstDayEvents : secondDayEvents).map((event, i) => {
+            {dayEvents.map((event, i) => {
+              const overlapEvent = dayEvents.filter(
+                (anotherEvent) =>
+                  anotherEvent.id != event.id &&
+                  placeRowsNumber(anotherEvent) == placeRowsNumber(event) &&
+                  anotherEvent.timing_start < event.timing_end &&
+                  event.timing_start < anotherEvent.timing_end,
+              );
+              const isRight = overlapEvent.some(
+                (anotherEvent) =>
+                  anotherEvent.timing_start < event.timing_start,
+              );
+
               return (
                 <button
                   type="button"
                   onClick={() => forOnClick(event)}
                   key={i}
-                  className="bg-primary z-10 my-0.5 flex items-center justify-center rounded-md p-2 text-xs text-wrap text-amber-50"
+                  className="bg-primary z-10 my-0.5 flex items-center justify-center overflow-hidden rounded-md p-2 text-wrap text-amber-50"
                   style={{
                     gridRow: `${(event.timing_start - TIME_START) * 2 + 1} / span ${(event.timing_end - event.timing_start) * 2}`,
-
                     gridColumnStart: placeRowsNumber(event) + 1,
+                    width: overlapEvent.length > 0 ? "50%" : "100%",
+                    fontSize: isRight ? "7px" : "12px",
+
+                    marginLeft: isRight ? "50%" : "0",
                   }}
                 >
-                  <div className="min-w-0 wrap-break-word">{event.name}</div>
+                  <div className="line-clamp-2 min-w-0 wrap-break-word">
+                    {event.name}
+                  </div>
                 </button>
               );
             })}
