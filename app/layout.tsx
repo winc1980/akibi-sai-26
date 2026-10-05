@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Zen_Kaku_Gothic_New, Yuji_Boku } from "next/font/google";
+import { Inter, Zen_Kaku_Gothic_New, Yuji_Boku, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "cn";
 import BackGround from "@/components/BackGround";
@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer/Footer";
 import ServerLayout from "./server-layout";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   variable: "--font-zen-kaku-gothic-new",
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         zenKakuGothicNew.variable,
         yujiBoku.variable,
         "font-sans",
-        inter.variable,
+        geist.variable,
       )}
     >
       <head>

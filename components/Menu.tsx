@@ -14,11 +14,13 @@ export function Menu({ toggle }: { toggle: Toggle }) {
         <XIcon className="m-4 h-8 w-8" />
       </button>
       <div className="flex-cols mb-auto flex h-30 w-full items-center justify-center">
-        <img
-          src="/akibi_text_logo.svg"
-          alt="あきび祭ロゴ"
-          className="h-auto w-47"
-        />
+        <Link onClick={() => toggle()} href="/">
+          <img
+            src="/akibi_text_logo.svg"
+            alt="あきび祭ロゴ"
+            className="h-auto w-47"
+          />
+        </Link>
       </div>
 
       <Link
@@ -82,11 +84,13 @@ export function MenuBar({ toggle }: { toggle: Toggle }) {
     <div>
       <div className="fixed top-0 z-40 flex w-full flex-col p-2">
         <div className="flex h-17 w-full flex-row items-center justify-between rounded-2xl bg-amber-50 px-5">
-          <img
-            src="/akibi_logo.svg"
-            alt="あきびアイコン"
-            className="h-13 w-13"
-          />
+          <Link href="/">
+            <img
+              src="/akibi_logo.svg"
+              alt="あきびアイコン"
+              className="h-13 w-13"
+            />
+          </Link>
           <button type="button" onClick={() => toggle()}>
             <MenuIcon className="h-5 w-5" />
           </button>

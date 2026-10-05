@@ -14,20 +14,10 @@ export default function AnimationTheme() {
         src="/mainTheme/pot.webp"
         alt="メインテーマ"
       />
-      <motion.div
-        variants={{
-          offscreen: {
-            opacity: 0,
-          },
-          onscreen: {
-            opacity: 1,
-          },
-        }}
 
-        transition={{
-          duration: 0.4,
-          delay: 0.2,
-        }}
+      <motion.div
+        variants={{ offscreen: { opacity: 0 }, onscreen: { opacity: 1 } }}
+        transition={{ duration: 0.4, delay: 0.2 }}
         className="text-akibi-black font-yuji absolute top-[25%] flex flex-col gap-0 text-center font-bold lg:top-[20%]"
       >
         <p className="text-[4cqw] leading-none lg:text-[2cqw]">
@@ -35,116 +25,25 @@ export default function AnimationTheme() {
         </p>
         <p className="text-[20cqw] leading-none lg:text-[10cqw]">お鍋</p>
       </motion.div>
-      <AnimationImage
-        initial={{
-          top: "40%",
-          left: "40%",
-          width: "1%",
-        }}
-        whileInView={{
-          top: "20%",
-          left: "0%",
-          width: "30%",
-        }}
-        src="/mainTheme/tofu.webp"
-        alt="豆腐"
-      />
-      <AnimationImage
-        initial={{
-          top: "40%",
-          left: "50%",
-          width: "1%",
-        }}
-        whileInView={{
-          top: "-30%",
-          left: "70%",
-          width: "30%",
-        }}
-
-        src="/mainTheme/shiitake.webp"
-        alt="しいたけ"
-      />
-      <AnimationImage
-        initial={{
-          top: "10%",
-          left: "30%",
-          width: "1%",
-        }}
-
-        whileInView={{
-          top: "-60%",
-          left: "0%",
-          width: "40%",
-        }}
-        src="/mainTheme/kamaboko.webp"
-        alt="かまぼこ"
-      />
-      <AnimationImage
-        initial={{
-          top: "50%",
-          left: "40%",
-          width: "1%",
-        }}
-
-        whileInView={{
-          top: "0%",
-          left: "50%",
-          width: "70%",
-        }}
-        src="/mainTheme/takosan.webp"
-        alt="たこさん"
-      />
-      <AnimationImage
-        initial={{
-          top: "50%",
-          left: "20%",
-          width: "1%",
-        }}
-
-        whileInView={{
-          top: "-60%",
-          left: "30%",
-          width: "40%",
-        }}
-        src="/mainTheme/carrot.webp"
-        alt="にんじん"
-      />
+      <div className="@container-size pointer-events-none absolute inset-0 flex items-center justify-center">
+        <motion.img
+          variants={{
+            offscreen: {
+              scale: 0,
+            },
+            onscreen: {
+              scale: 1,
+            },
+          }}
+          style={{
+            top: "-18%",
+          }}
+          className="relative"
+          transition={{ type: "spring", duration: 0.8 }}
+          src="/mainTheme/fly.webp"
+          alt=""
+        />
+      </div>
     </motion.div>
-  );
-}
-
-function AnimationImage({
-  src,
-  alt,
-  initial,
-  whileInView,
-}: {
-  src: string;
-  alt: string;
-  initial: {
-    top: string;
-    left: string;
-    width: string;
-  };
-  whileInView: {
-    top: string;
-    left: string;
-    width: string;
-  };
-}) {
-  return (
-    <motion.img
-      variants={{
-        offscreen: initial,
-        onscreen: whileInView,
-      }}
-      transition={{
-        type: "spring",
-        duration: 0.8,
-      }}
-      className="absolute"
-      src={src}
-      alt={alt}
-    />
   );
 }

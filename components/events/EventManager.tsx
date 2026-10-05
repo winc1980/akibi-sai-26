@@ -4,6 +4,7 @@ import EventDetail from "./eventdetail";
 
 import Schedule from "./schedule";
 import { EventData } from "@/lib/types";
+import { Dialog } from "@base-ui/react";
 
 export default function EventManager({
   initialData,
@@ -34,9 +35,9 @@ export default function EventManager({
   }
 
   return (
-    <div>
+    <Dialog.Root onOpenChange={setShowDetailPage} open={showDetailPage}>
       <div>
-        {showDetailPage && selected ? (
+        {selected && showDetailPage ? (
           <EventDetail
             detailToggle={toggleDetailPageVisibility}
             events={selected}
@@ -50,6 +51,6 @@ export default function EventManager({
         dayToggle={toggleDayEvent}
         showDay={showDayEvents}
       />
-    </div>
+    </Dialog.Root>
   );
 }

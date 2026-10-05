@@ -1,4 +1,4 @@
-export function MainVisual() {
+export default function MainVisual() {
   return (
     <div className="relative -z-20 flex min-h-screen w-full items-center justify-center overflow-x-clip py-20">
       <div className="flex w-full flex-col items-center justify-center gap-12 md:flex-row-reverse md:gap-6">

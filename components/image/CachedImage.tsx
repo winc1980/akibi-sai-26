@@ -3,12 +3,13 @@
 import { useCachedImageRegistry } from "@/app/client-layout";
 import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
 
-export function CachedImage({
+export function CachedImage<T extends string>({
   src,
   alt,
   ...rest
 }: DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> & {
   src: string;
+  alt: T extends "" ? never : T;
 }) {
   const registry = useCachedImageRegistry();
   const cachedUrl = registry[src];
