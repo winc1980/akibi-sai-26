@@ -46,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
         )}
+        <meta name="確認" content="しっかりと動いています" />
       </head>
       <body className="text-akibi-black font-zen flex min-h-full w-full flex-col font-semibold">
         <BackGround />
