@@ -6,6 +6,7 @@ import BackGround from "@/components/BackGround";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer/Footer";
 import ServerLayout from "./server-layout";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -49,6 +50,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ServerLayout>{children}</ServerLayout>
         <Footer />
       </body>
+            {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
+      )}
     </html>
   );
 }
