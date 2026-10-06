@@ -1,4 +1,5 @@
 import { EventData } from "@/lib/types";
+import { Dialog } from "@base-ui/react";
 
 type Toggle = () => void;
 type OnSelect = (id: string) => void;
@@ -148,8 +149,7 @@ export default function Schedule({
               );
 
               return (
-                <button
-                  type="button"
+                <Dialog.Trigger
                   onClick={() => forOnClick(event)}
                   key={i}
                   className="bg-primary z-10 my-0.5 flex items-center justify-center overflow-hidden rounded-md p-2 text-wrap text-amber-50"
@@ -162,10 +162,8 @@ export default function Schedule({
                     marginLeft: isRight ? "50%" : "0",
                   }}
                 >
-                  <div className="line-clamp-2 min-w-0 wrap-break-word">
-                    {event.name}
-                  </div>
-                </button>
+                  <div className="min-w-0 wrap-break-word">{event.name}</div>
+                </Dialog.Trigger>
               );
             })}
           </div>

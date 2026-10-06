@@ -1,85 +1,22 @@
 import { WhiteTextBox } from "@/components/WhiteTextBox";
 import AnimationTheme from "./AnimationTheme";
-import { WavePath } from "../WavePath";
-import MoveBackground from "../MoveBackground";
+import DecoratedText from "../DecoratedText";
+import ViewPortChecker from "../ViewPortChecker";
 
 export default function MainTheme({ theme }: { theme: string }) {
   return (
-    <MoveBackground>
+    <ViewPortChecker>
       <div className="relative z-10">
-        <WavePath className="relative -bottom-1" />
-        <WavePath className="absolute bottom-4 opacity-50" />
-        <div>
-          <img
-            style={{
-              top: "-20%",
-              width: "10%",
-            }}
-            src="/mainTheme/single-carrot-a.png"
-            alt="人参"
-            className="absolute"
-          />
-          <img
-            style={{
-              top: "-50%",
-              left: "20%",
-              width: "8%",
-            }}
-            src="/mainTheme/hakusai.png"
-            alt="白菜"
-            className="absolute"
-          />
-          <img
-            style={{
-              top: "-10%",
-              left: "30%",
-              width: "8%",
-            }}
-            src="/mainTheme/single-shiitake-a.png"
-            alt="しいたけ"
-            className="absolute"
-          />
-          <img
-            style={{
-              top: "40%",
-              left: "40%",
-              width: "6%",
-            }}
-            src="/mainTheme/single-kamaboko-a.png"
-            alt="かまぼこ"
-            className="absolute"
-          />
-          <img
-            style={{
-              top: "-20%",
-              left: "50%",
-              width: "10%",
-            }}
-            src="/mainTheme/single-carrot-b.png"
-            alt="人参"
-            className="absolute"
-          />
-          <img
-            style={{
-              top: "-20%",
-              left: "70%",
-              width: "10vw",
-            }}
-            src="/mainTheme/single-tofu-a.png"
-            alt="豆腐"
-            className="absolute"
-          />
-          <img
-            style={{
-              top: "-15%",
-              left: "90%",
-              width: "10%",
-            }}
-            src="/mainTheme/single-shiitake-b.png"
-            alt="しいたけ"
-            className="absolute"
-          />
-        </div>
+        <img
+          className="relative -bottom-1 w-full md:hidden"
+          src="/wave_small.webp"
+          alt="sample"
+        />
+        <img
+          className="relative -bottom-1 hidden w-full md:block"
+          src="/wave_large.webp"
+          alt="sample"
+        />
       </div>
       <div
         id="theme"
@@ -88,11 +25,11 @@ export default function MainTheme({ theme }: { theme: string }) {
         <AnimationTheme />
         <div className="grid w-[90vw] place-items-center lg:w-[50vw]">
           <WhiteTextBox className="[grid-area:1/1] lg:w-[45vw]">
-            <p>{theme}</p>
+            <DecoratedText text={theme}></DecoratedText>
           </WhiteTextBox>
         </div>
         <div className="bg-primary absolute -bottom-10 -z-10 h-10 w-full [clip-path:ellipse(87%_57%_at_50%_41%)] md:h-40"></div>
       </div>
-    </MoveBackground>
+    </ViewPortChecker>
   );
 }
