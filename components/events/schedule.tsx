@@ -7,13 +7,13 @@ export default function Schedule({
   events,
   detailToggle,
   dayToggle,
-  showDay,
+  showFirstDay,
   onSelect,
 }: {
   events: EventData[];
   detailToggle: Toggle;
   dayToggle: Toggle;
-  showDay: boolean;
+  showFirstDay: boolean;
   onSelect: OnSelect;
 }) {
   const TIME_START = 9.5;
@@ -24,7 +24,6 @@ export default function Schedule({
     return placeLabel.findIndex((items) => items == scheduledEvents.place);
   }
 
-  // function formatTime(number:number){if(Number.isInteger(number)){return{number};}else{return{}}}
   const allDayEvents = events.filter(
     (event) => event.timing_start == TIME_START && event.timing_end == TIME_END,
   );
@@ -51,24 +50,47 @@ export default function Schedule({
     onSelect(event.id);
   };
 
+  const dayEvents = showFirstDay ? firstDayEvents : secondDayEvents;
+
   return (
     <div className="font-zen-kaku h-full w-full flex-row p-20 font-semibold">
       {/* １日目、２日目ラベル */}
-      <div className="center h-10 w-full rounded-md bg-amber-300 p-1">
+      <div className="center h-10 w-full rounded-md bg-amber-50 p-1">
         <div className="flex flex-row items-center justify-center">
           <button
             type="button"
-            onClick={dayToggle}
+            onClick={() => {
+              if (showFirstDay) {
+                return;
+              } else {
+                dayToggle();
+              }
+            }}
             className="h-8 grow rounded-md text-center"
-            style={{ backgroundColor: showDay ? "white" : undefined }}
+
+            style={{
+              backgroundColor: showFirstDay
+                ? "var(--color-focused)"
+                : undefined,
+            }}
           >
             一日目
           </button>
           <button
             type="button"
-            onClick={dayToggle}
+            onClick={() => {
+              if (showFirstDay) {
+                dayToggle();
+              } else {
+                return;
+              }
+            }}
             className="h-8 grow rounded-md text-center"
-            style={{ backgroundColor: showDay ? undefined : "white" }}
+            style={{
+              backgroundColor: showFirstDay
+                ? undefined
+                : "var(--color-focused)",
+            }}
           >
             二日目
           </button>
@@ -83,7 +105,7 @@ export default function Schedule({
           {placeLabel.map((place, i) => (
             <div
               key={i}
-              className="text-amber-50h-10 bg-secondary flex h-10 items-center justify-center rounded-md p-2 text-xs"
+              className="bg-time-table-label flex h-10 items-center justify-center rounded-md p-2 text-xs text-amber-50"
             >
               {place}
             </div>
@@ -133,16 +155,31 @@ export default function Schedule({
               gridTemplate: "repeat(22,36px)/repeat(6,minmax(0,1fr))",
             }}
           >
-            {(showDay ? firstDayEvents : secondDayEvents).map((event, i) => {
+            {dayEvents.map((event, i) => {
+              const overlapEvent = dayEvents.filter(
+                (anotherEvent) =>
+                  anotherEvent.id != event.id &&
+                  placeRowsNumber(anotherEvent) == placeRowsNumber(event) &&
+                  anotherEvent.timing_start < event.timing_end &&
+                  event.timing_start < anotherEvent.timing_end,
+              );
+              const isRight = overlapEvent.some(
+                (anotherEvent) =>
+                  anotherEvent.timing_start < event.timing_start,
+              );
+
               return (
                 <Dialog.Trigger
                   onClick={() => forOnClick(event)}
                   key={i}
-                  className="bg-primary z-10 my-0.5 flex items-center justify-center rounded-md p-2 text-xs text-wrap text-amber-50"
+                  className="bg-primary z-10 my-0.5 flex items-center justify-center overflow-hidden rounded-md p-2 text-wrap text-amber-50"
                   style={{
                     gridRow: `${(event.timing_start - TIME_START) * 2 + 1} / span ${(event.timing_end - event.timing_start) * 2}`,
-
                     gridColumnStart: placeRowsNumber(event) + 1,
+                    width: overlapEvent.length > 0 ? "45%" : "100%",
+                    fontSize: isRight ? "7px" : "12px",
+
+                    marginLeft: isRight ? "55%" : "0",
                   }}
                 >
                   <div className="min-w-0 wrap-break-word">{event.name}</div>
