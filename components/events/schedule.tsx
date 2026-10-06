@@ -7,13 +7,13 @@ export default function Schedule({
   events,
   detailToggle,
   dayToggle,
-  showDay,
+  showFirstDay,
   onSelect,
 }: {
   events: EventData[];
   detailToggle: Toggle;
   dayToggle: Toggle;
-  showDay: boolean;
+  showFirstDay: boolean;
   onSelect: OnSelect;
 }) {
   const TIME_START = 9.5;
@@ -24,7 +24,6 @@ export default function Schedule({
     return placeLabel.findIndex((items) => items == scheduledEvents.place);
   }
 
-  // function formatTime(number:number){if(Number.isInteger(number)){return{number};}else{return{}}}
   const allDayEvents = events.filter(
     (event) => event.timing_start == TIME_START && event.timing_end == TIME_END,
   );
@@ -51,26 +50,47 @@ export default function Schedule({
     onSelect(event.id);
   };
 
-  const dayEvents = showDay ? firstDayEvents : secondDayEvents;
+  const dayEvents = showFirstDay ? firstDayEvents : secondDayEvents;
 
   return (
     <div className="font-zen-kaku h-full w-full flex-row p-20 font-semibold">
       {/* １日目、２日目ラベル */}
-      <div className="center bg-secondary h-10 w-full rounded-md p-1">
+      <div className="center h-10 w-full rounded-md bg-amber-50 p-1">
         <div className="flex flex-row items-center justify-center">
           <button
             type="button"
-            onClick={dayToggle}
+            onClick={() => {
+              if (showFirstDay) {
+                return;
+              } else {
+                dayToggle();
+              }
+            }}
             className="h-8 grow rounded-md text-center"
-            style={{ backgroundColor: showDay ? "white" : undefined }}
+
+            style={{
+              backgroundColor: showFirstDay
+                ? "var(--color-focused)"
+                : undefined,
+            }}
           >
             一日目
           </button>
           <button
             type="button"
-            onClick={dayToggle}
+            onClick={() => {
+              if (showFirstDay) {
+                dayToggle();
+              } else {
+                return;
+              }
+            }}
             className="h-8 grow rounded-md text-center"
-            style={{ backgroundColor: showDay ? undefined : "white" }}
+            style={{
+              backgroundColor: showFirstDay
+                ? undefined
+                : "var(--color-focused)",
+            }}
           >
             二日目
           </button>
@@ -85,7 +105,7 @@ export default function Schedule({
           {placeLabel.map((place, i) => (
             <div
               key={i}
-              className="text-amber-50h-10 bg-focused flex h-10 items-center justify-center rounded-md p-2 text-xs"
+              className="bg-time-table-label flex h-10 items-center justify-center rounded-md p-2 text-xs text-amber-50"
             >
               {place}
             </div>
@@ -156,10 +176,10 @@ export default function Schedule({
                   style={{
                     gridRow: `${(event.timing_start - TIME_START) * 2 + 1} / span ${(event.timing_end - event.timing_start) * 2}`,
                     gridColumnStart: placeRowsNumber(event) + 1,
-                    width: overlapEvent.length > 0 ? "50%" : "100%",
+                    width: overlapEvent.length > 0 ? "45%" : "100%",
                     fontSize: isRight ? "7px" : "12px",
 
-                    marginLeft: isRight ? "50%" : "0",
+                    marginLeft: isRight ? "55%" : "0",
                   }}
                 >
                   <div className="min-w-0 wrap-break-word">{event.name}</div>

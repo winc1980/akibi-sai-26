@@ -12,7 +12,7 @@ export default function EventManager({
   initialData: EventData[];
 }) {
   const [showDetailPage, setShowDetailPage] = useState(false);
-  const [showDayEvents, setShowDayEvents] = useState(false);
+  const [showFirstDayEvents, setShowDayEvents] = useState(false);
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
   const handleSelect = (id: string) => {
     setSelectedId(id);
@@ -27,7 +27,7 @@ export default function EventManager({
     }
   }
   function toggleDayEvent() {
-    if (showDayEvents) {
+    if (showFirstDayEvents) {
       setShowDayEvents(false);
     } else {
       setShowDayEvents(true);
@@ -49,7 +49,7 @@ export default function EventManager({
         events={initialData}
         detailToggle={toggleDetailPageVisibility}
         dayToggle={toggleDayEvent}
-        showDay={showDayEvents}
+        showFirstDay={showFirstDayEvents}
       />
     </Dialog.Root>
   );
