@@ -8,7 +8,7 @@ import Footer from "@/components/Footer/Footer";
 import ServerLayout from "./server-layout";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   variable: "--font-zen-kaku-gothic-new",
@@ -43,6 +43,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <meta name="apple-mobile-web-app-title" content="あきび祭2026" />
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
+        )}
       </head>
       <body className="text-akibi-black font-zen flex min-h-full w-full flex-col font-semibold">
         <BackGround />
@@ -50,9 +53,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ServerLayout>{children}</ServerLayout>
         <Footer />
       </body>
-            {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
-      )}
     </html>
   );
 }

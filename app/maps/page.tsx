@@ -6,9 +6,10 @@ import { CachedImage } from "@/components/image/CachedImage";
 
 export default async function Page() {
   const data = await getMicroCmsData("constants");
-  if (data.map_img.length !== 1) {
-    throw new Error(`マップの画像が${data.map_img.length}枚ある`);
-  }
+  // 二枚以上表示してほしいらしい
+  // if (data.map_img.length !== 1) {
+  //   throw new Error(`マップの画像が${data.map_img.length}枚ある`);
+  // }
   return (
     <div className="flex flex-col items-center gap-10 px-6 py-20">
       <SectionContainer label="マップ">
@@ -31,6 +32,15 @@ export default async function Page() {
           alt="構内マップ"
         />
       </SectionContainer>
+      {data.map_img.length > 1 ? (
+        <SectionContainer label="">
+          <CachedImage
+            className="xs:max-w-[95dvw] w-4xl max-w-dvw rounded-2xl"
+            src={data.map_img[1].url}
+            alt="構内マップ"
+          />
+        </SectionContainer>
+      ) : null}
     </div>
   );
 }
