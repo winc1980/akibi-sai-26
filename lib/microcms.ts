@@ -51,10 +51,16 @@ export default async function getMicroCmsData<E extends EndPoint>(
     if (isArrayEndPoint(endpoint)) {
       data = await client.getAllContents({
         endpoint,
+        customRequestInit: {
+          cache: "no-store",
+        },
       });
     } else {
       data = await client.get({
         endpoint,
+        customRequestInit: {
+          cache: "no-store",
+        },
       });
     }
   } catch (error) {
