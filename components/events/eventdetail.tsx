@@ -20,14 +20,14 @@ export default function EventDetail({
   }
 
   return (
-    <Dialog.Portal className="text-akibi-black fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center">
+    <Dialog.Portal className="text-akibi-black fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center px-30 py-90">
       <Dialog.Backdrop className="absolute h-full w-full bg-gray-500/60"></Dialog.Backdrop>
-      <Dialog.Popup className="z-50 flex aspect-3/2 w-full max-w-150 flex-col gap-10 rounded-4xl bg-amber-50 p-7 px-12">
+      <Dialog.Popup className="z-50 flex aspect-3/2 max-h-100 w-full max-w-150 flex-col gap-10 rounded-4xl bg-amber-50 p-7 px-12">
         {/* イベント名と閉じるアイコンのrow */}
-        <div className="flex flex-col gap-15">
+        <div className="flex flex-col gap-6">
           <div className="flex w-full flex-row justify-between">
             <div
-              className="w-100 text-3xl leading-16"
+              className="w-100 pt-2 text-3xl leading-16"
               style={{ fontSize: events.name.length > 19 ? "21px" : "30px" }}
             >
               {events.name}

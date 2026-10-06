@@ -12,7 +12,7 @@ export default function EventManager({
   initialData: EventData[];
 }) {
   const [showDetailPage, setShowDetailPage] = useState(false);
-  const [showFirstDayEvents, setShowDayEvents] = useState(true);
+  const [showFirstDayEvents, setShowDayEvents] = useState(false);
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
   const handleSelect = (id: string) => {
     setSelectedId(id);
