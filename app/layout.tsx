@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Zen_Kaku_Gothic_New, Yuji_Boku, Geist } from "next/font/google";
+import { Zen_Kaku_Gothic_New, Yuji_Boku, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "cn";
 import BackGround from "@/components/BackGround";
