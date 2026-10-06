@@ -2,10 +2,15 @@ name: Deploy on microCMS Update
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   repository_dispatch:
-    types: [microcms-events-update]
+    types:
+      [
+        microcms-events-update,
+        microcms-constants-update,
+        microcms-shops-update,
+        microcms-shop_indexes-update,
+      ]
   workflow_dispatch:
 
 jobs:
@@ -27,7 +32,7 @@ jobs:
         env:
           MICROCMS_SERVICE_DOMAIN: ${{ vars.MICROCMS_SERVICE_DOMAIN }}
           MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
-
+          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
       - name: Deploy
         run: bunx wrangler deploy
         env:
