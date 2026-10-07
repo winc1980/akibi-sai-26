@@ -4,7 +4,10 @@ import { Access, GoogleMap } from "./MapCards";
 
 export default function Maps() {
   return (
-    <div className="bg-secondary relative flex w-full flex-col items-center justify-center gap-80 overflow-x-clip pt-80 pb-20 sm:gap-100 sm:pt-100 md:flex-row md:gap-2 md:px-2 lg:gap-7">
+    <div
+      id="access"
+      className="bg-secondary relative flex w-full flex-col items-center justify-center gap-80 overflow-x-clip pt-80 pb-20 sm:gap-100 sm:pt-100 md:flex-row md:gap-2 md:px-2 lg:gap-7"
+    >
       <PodShapedCardContainer label="アクセス">
         <Access />
       </PodShapedCardContainer>
