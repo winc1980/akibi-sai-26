@@ -22,7 +22,8 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Remove Cache
-      - uses: rm -rf ./.next
+        run: rm -rf ./.next
+      
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
 
