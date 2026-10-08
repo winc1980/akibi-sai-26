@@ -22,7 +22,7 @@ export default function EventDetail({
   return (
     <Dialog.Portal className="text-akibi-black fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center">
       <Dialog.Backdrop className="absolute h-full w-full bg-gray-500/60"></Dialog.Backdrop>
-      <Dialog.Popup className="text-4 relative z-50 flex max-h-120 max-w-90 flex-col rounded-4xl bg-amber-50 p-5">
+      <Dialog.Popup className="text-4 relative z-50 flex max-h-120 max-w-90 flex-col rounded-4xl bg-amber-50 p-7 md:max-h-250 md:max-w-185 md:p-10">
         <div className="flex flex-col gap-6">
           {/* イベント名 */}
           <div
@@ -32,7 +32,7 @@ export default function EventDetail({
           >
             <div className="whitespace-pre-line">
               {events.name
-                .replace("inあきび祭", "\ninあきび祭")
+                .replace("ドローイングinあきび祭", "\nドローイングinあきび祭")
                 .replace("SHOWCASE", "\nSHOWCASE")}
             </div>
           </div>

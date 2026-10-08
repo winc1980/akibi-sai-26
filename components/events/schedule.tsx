@@ -174,7 +174,7 @@ export default function Schedule({
                       <Dialog.Trigger
                         onClick={() => forOnClick(event)}
                         key={i}
-                        className="bg-primary z-10 my-0.5 flex items-center justify-center rounded-md p-2 text-wrap text-amber-50"
+                        className="bg-primary z-10 my-0.5 flex items-center justify-center rounded-md p-2 text-wrap text-amber-50 hover:bg-amber-700"
                         style={{
                           gridRow: `${(event.timing_start - TIME_START) * 2 + 1} / span ${(event.timing_end - event.timing_start) * 2}`,
                           gridColumnStart: placeRowsNumber(event) + 1,
