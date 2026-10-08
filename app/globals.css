@@ -3,17 +3,17 @@
   --color-primary: rgba(222, 92, 40);
   --color-secondary: rgb(165 197 84);
   --color-tertiary: rgb(224 222 172);
+  --color-primary-darker: oklch(0.599 0.175 40);
   --color-focused: var(--color-amber-400);
   --color-unfocused: var(--color-white);
   --color-food: var(--color-rose-400);
   --color-goods: var(--color-orange-400);
-  --color-exgray: oklch(0.922, 0, 0);
   --color-pod: rgb(252, 221, 114);
   --color-lid: rgb(199, 176, 93);
   --color-time-table-label: rgb(92, 79, 66);
   --color-akibi-black: rgb(36, 24, 19);
   --color-winc-black: rgb(28, 25, 23);
-  --color-time-table-label:rgb(96, 76, 62);
+  --color-time-table-label: rgb(96, 76, 62);
 
   --font-zen: var(--font-zen-kaku-gothic-new), sans-serif;
   --font-yuji: "HGP行書体", "HG行書体", "HGS行書体", "Yu Mincho", serif;
